@@ -8,6 +8,14 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        customRed: "#990011",
+        customPurple: "#6D31EDFF",
+        customPurple600: "#5113D7FF",
+      },
+      fontFamily: {
+        lexend: ["Lexend", "sans-serif"],
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
@@ -15,6 +23,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
+  darkMode: "class",
 };
 export default config;
