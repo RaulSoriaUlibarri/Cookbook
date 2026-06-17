@@ -5,7 +5,6 @@ import "./globals.css";
 import "@radix-ui/themes/styles.css";
 import ThemeProviders from "@/utlis/providers/themeProvider";
 import { Theme } from "@radix-ui/themes";
-import { UserProvider } from "@auth0/nextjs-auth0/client";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,15 +20,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <UserProvider>
-        <body className={inter.className}>
-          <ThemeProviders>
-            <ReactQueryProvider>
-              <Theme>{children}</Theme>
-            </ReactQueryProvider>
-          </ThemeProviders>
-        </body>
-      </UserProvider>
+      <body className={inter.className}>
+        <ThemeProviders>
+          <ReactQueryProvider>
+            <Theme>{children}</Theme>
+          </ReactQueryProvider>
+        </ThemeProviders>
+      </body>
     </html>
   );
 }
