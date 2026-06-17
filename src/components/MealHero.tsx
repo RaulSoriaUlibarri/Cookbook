@@ -9,7 +9,7 @@ const MealHero = () => {
           alt="categoryHero2"
           className="relative h-full w-full object-fill"
         />
-        <div className="absolute top-[150px] right-0 px-5 text-white mb-10 flex-1 max-w-[30rem] mx-auto md:max-w-max md:top-[280px] md:right-[130px] md:my-auto md:mx-5">
+        <div className="absolute top-[150px] right-0 px-5 text-white mb-10 flex-1 max-w-120 mx-auto md:max-w-max md:top-[280px] md:right-[130px] md:my-auto md:mx-5">
           <h3 className="mb-5 text-2xl px-3 font-lexend font-semibold md:text-6xl md:font-extrabold md:text-left md:mb-10">
             Healthy Recipes
           </h3>

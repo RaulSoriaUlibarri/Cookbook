@@ -11,7 +11,7 @@ export default function HeroCarousel() {
   return (
     <div className="flex justify-center">
       <div
-        className="overflow-hidden h-80 w-80 mx-7 my-3 rounded-xl md:w-60 lg:h-[28rem] lg:w-[23rem] shadow-md"
+        className="overflow-hidden h-80 w-80 mx-7 my-3 rounded-xl md:w-60 lg:h-112 lg:w-92 shadow-md"
         ref={emblaRef}
       >
         <div className="flex h-full">
