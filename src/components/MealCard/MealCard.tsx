@@ -24,7 +24,7 @@ const MealCard = ({ id, img, name, category }: MealCardProps) => {
   }
 
   return (
-    <li className="flex flex-col rounded-lg shadow-md p-3.5 border-[1px] border-gray-200 dark:border-slate-500 ">
+    <li className="flex flex-col rounded-lg shadow-md p-3.5 border border-gray-200 dark:border-slate-500 ">
       <div className="max-h-[300px] sm:max-h-[170px]">
         <img
           className="rounded-xl w-full h-full object-fill"
