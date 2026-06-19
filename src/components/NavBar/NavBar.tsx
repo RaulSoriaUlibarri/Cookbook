@@ -5,8 +5,8 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import Link from "next/link";
 import MaxWidthWrapper from "../MaxWidthWrapper";
 import MobileNav from "./MobileNav";
-import ThemeToggle from "../ThemeToggle";
-import ProfileClient from "../ProfileClient";
+import ThemeToggle from "./ThemeToggle";
+import ProfileClient from "./ProfileClient";
 import { CookingPot, ChefHat, LogIn, LogOut } from "lucide-react";
 
 const NavBar = () => {
@@ -23,7 +23,7 @@ const NavBar = () => {
                 href="/"
                 className="flex mr-4 z-40 text-xl md:text-3xl font-semibold hover:cursor-pointer"
               >
-                <span>Mosha's recipes</span>
+                <span>CookingBook</span>
               </Link>
 
               <div className="hidden sm:flex text-sm">

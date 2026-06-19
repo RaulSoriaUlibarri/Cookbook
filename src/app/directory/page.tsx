@@ -3,7 +3,7 @@
 import { useState } from "react";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import MealHero from "@/components/MealHero";
-import NavBar from "@/components/UI/NavBar";
+import NavBar from "@/components/NavBar/NavBar";
 import MealsList from "@/components/UI/MealsList";
 import CategorySelect from "@/components/UI/CategorySelect";
 import Footer from "@/components/UI/Footer";
