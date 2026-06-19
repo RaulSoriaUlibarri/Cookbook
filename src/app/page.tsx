@@ -6,7 +6,7 @@ import {
   HydrationBoundary,
   dehydrate,
 } from "@tanstack/react-query";
-import NavBar from "@/components/UI/NavBar";
+import NavBar from "@/components/NavBar/NavBar";
 import HeroCarousel from "@/components/UI/HeroCarousel";
 import Footer from "@/components/UI/Footer";
 
@@ -19,7 +19,6 @@ export default async function Home() {
 
   return (
     <>
-      <NavBar />
       <div className="h-[720px]">
         <img
           className="relative h-full w-full object-fill"

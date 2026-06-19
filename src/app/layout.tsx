@@ -5,6 +5,7 @@ import "./globals.css";
 import "@radix-ui/themes/styles.css";
 import ThemeProviders from "@/utlis/providers/themeProvider";
 import { Theme } from "@radix-ui/themes";
+import { NavBar } from "@/components/index";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,6 +25,9 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProviders>
           <ReactQueryProvider>
+            <header>
+              <NavBar />
+            </header>
             <Theme>{children}</Theme>
           </ReactQueryProvider>
         </ThemeProviders>
