@@ -4,9 +4,7 @@ import { useState } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import Link from "next/link";
 import MaxWidthWrapper from "../MaxWidthWrapper";
-import MobileNav from "./MobileNav";
-import ThemeToggle from "./ThemeToggle";
-import ProfileClient from "./ProfileClient";
+import { MobileNav, ThemeToggle, ProfileClient } from "./index";
 import { CookingPot, ChefHat, LogIn, LogOut } from "lucide-react";
 
 const NavBar = () => {
