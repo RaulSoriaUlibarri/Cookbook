@@ -19,7 +19,6 @@ export default async function Home() {
 
   return (
     <>
-      <NavBar />
       <div className="h-[720px]">
         <img
           className="relative h-full w-full object-fill"

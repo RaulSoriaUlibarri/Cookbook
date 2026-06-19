@@ -11,7 +11,6 @@ import Footer from "@/components/UI/Footer";
 export default function directory() {
   return (
     <>
-      <NavBar />
       <MealHero />
       <div className="mt-14 mb-28 p-1 h-auto ">
         <CategorySelect />
