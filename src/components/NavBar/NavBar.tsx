@@ -1,19 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import { useUser } from "@auth0/nextjs-auth0/client";
+// import { useUser } from "@auth0/nextjs-auth0/client";
 import Link from "next/link";
 import MaxWidthWrapper from "../MaxWidthWrapper";
 import { MobileNav, ThemeToggle, ProfileClient } from "./index";
 import { CookingPot, ChefHat, LogIn, LogOut } from "lucide-react";
 
 const NavBar = () => {
-  const { user } = useUser();
+  // const { user } = useUser();
   const [activeTab, setActiveTab] = useState<string>("");
 
   return (
     <>
-      <nav className="sticky inset-x-0 top-0 z-30 w-full bg-white/75 backdrop-blur-lg transition-all text-gray-600 text-sm dark:bg-black dark:text-white">
+      <nav className="sticky inset-x-0 top-0 mx-auto z-30 w-2/3 bg-transparent backdrop-blur-lg transition-all text-gray-600 text-sm dark:text-white">
         <MaxWidthWrapper className="w-full max-w-none md:px-0">
           <div className="flex h-14 items-center justify-between md:justify-between px-5 ">
             <div className="flex items-center">
@@ -23,7 +23,9 @@ const NavBar = () => {
               >
                 <span>CookingBook</span>
               </Link>
-
+            </div>
+            <div className="flex justify-end items-center w-auto">
+              <MobileNav isAuth={false} />
               <div className="hidden sm:flex text-sm">
                 <Link
                   onClick={() => setActiveTab("tab1")}
@@ -52,13 +54,10 @@ const NavBar = () => {
                   <ChefHat className="mr-2 hover:text-customPurple" size={20} />
                   My Recipes
                 </Link>
+                <ThemeToggle />
               </div>
-            </div>
-            <MobileNav isAuth={false} />
-            <div className="flex justify-end items-center w-auto">
-              <ThemeToggle />
-              <ProfileClient />
-              {user ? (
+              {/* <ProfileClient /> */}
+              {/* {user ? (
                 <Link
                   onClick={() => setActiveTab("tab3")}
                   href="/api/auth/logout"
@@ -84,7 +83,7 @@ const NavBar = () => {
                   <LogIn className="mr-2 hover:text-customPurple" size={20} />
                   Sign in
                 </Link>
-              )}
+              )} */}
             </div>
           </div>
         </MaxWidthWrapper>

@@ -25,7 +25,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProviders>
           <ReactQueryProvider>
-            <header>
+            <header className="bg-white dark:bg-black">
               <NavBar />
             </header>
             <Theme>{children}</Theme>
