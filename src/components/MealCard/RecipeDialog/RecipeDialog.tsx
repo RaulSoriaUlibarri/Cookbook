@@ -15,6 +15,7 @@ const RecipeDialog = ({ id }: RecipeDialogProps) => {
     queryFn: () => fetchMeal(id),
     queryKey: ["meal", id],
     enabled: !!id,
+    staleTime: 1000 * 60 * 30,
   });
 
   if (isLoading) return <p>Loading...</p>;
@@ -149,12 +150,12 @@ const RecipeDialog = ({ id }: RecipeDialogProps) => {
                 {cleanInstructions
                   .filter((step: string) => step.length > 3)
                   .map((step: string, index: number) => {
-                  return (
-                    <li key={index} className="py-1 list-decimal">
-                      {step}
-                    </li>
-                  );
-                })}
+                    return (
+                      <li key={index} className="py-1 list-decimal">
+                        {step}
+                      </li>
+                    );
+                  })}
               </ul>
             </div>
           </section>
