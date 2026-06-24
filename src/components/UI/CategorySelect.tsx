@@ -18,16 +18,15 @@ export default function CategorySelect() {
   const { data, error, isLoading } = useQuery<Categoria[]>({
     queryFn: fetchCategories,
     queryKey: ["categories"],
+    staleTime: 1000 * 60 * 30,
   });
 
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   useEffect(() => {
-    if (data && data.length > 0 && selectedCategory === null) {
-      const defaultCategory = data[0].strCategory;
-      setSelectedCategory(defaultCategory);
-    }
-  }, [data, selectedCategory]);
+    const defaultCategory = "Beef";
+    setSelectedCategory(defaultCategory);
+  }, []);
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;

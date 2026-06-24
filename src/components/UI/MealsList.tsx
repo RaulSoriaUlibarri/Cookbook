@@ -13,6 +13,7 @@ export default function MealsList({ category }: MealsListProps) {
     queryFn: () => fetchCategoryMeals(category),
     queryKey: ["meals", category],
     enabled: !!category,
+    staleTime: 1000 * 60 * 30,
   });
 
   if (isLoading) return <p>Loading...</p>;
