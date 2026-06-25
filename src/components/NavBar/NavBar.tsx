@@ -6,6 +6,7 @@ import Link from "next/link";
 import MaxWidthWrapper from "../MaxWidthWrapper";
 import { MobileNav, ThemeToggle, ProfileClient } from "./index";
 import { CookingPot, ChefHat, LogIn, LogOut } from "lucide-react";
+import { SearchBar } from "../index";
 
 const NavBar = () => {
   // const { user } = useUser();
@@ -23,6 +24,9 @@ const NavBar = () => {
               >
                 <span>CookingBook</span>
               </Link>
+            </div>
+            <div>
+              <SearchBar />
             </div>
             <div className="flex justify-end items-center w-auto">
               <MobileNav isAuth={false} />
