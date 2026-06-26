@@ -5,7 +5,7 @@ import { useState } from "react";
 const mealsArr = ["Pizza", "Meatballs", "Hamburguer", "Rabbit"];
 
 const SearchBar = () => {
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState<string[]>([]);
 
   function handleSearch(e: React.ChangeEvent<HTMLInputElement>) {
     const value = e.target.value;
