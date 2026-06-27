@@ -1,6 +1,6 @@
 "use client";
 
-import CategorySelect from "./CategorySelect";
+import CategorySelect from "../../containers/CategorySelect";
 
 const SelectBar = () => {
   return <div></div>;
