@@ -1,10 +1,10 @@
-import { CategorySelect } from "../components/index";
+import { FiltersContainer } from "../components/index";
 
 const RecipesContainer = () => {
   return (
     <>
       <section>
-        <CategorySelect />
+        <FiltersContainer />
       </section>
     </>
   );
