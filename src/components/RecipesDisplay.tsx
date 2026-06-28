@@ -2,13 +2,13 @@
 
 import { fetchCategoryMeals } from "@/server/actions";
 import { useQuery } from "@tanstack/react-query";
-import MealCard from "../MealCard/MealCard";
+import MealCard from "./MealCard/MealCard";
 
-interface MealsListProps {
+interface RecipesDisplayProps {
   category: string | null;
 }
 
-export default function MealsList({ category }: MealsListProps) {
+const RecipesDisplay = ({ category }: RecipesDisplayProps) => {
   const { data, error, isLoading } = useQuery({
     queryFn: () => fetchCategoryMeals(category),
     queryKey: ["meals", category],
@@ -37,4 +37,6 @@ export default function MealsList({ category }: MealsListProps) {
       </ul>
     </div>
   );
-}
+};
+
+export default RecipesDisplay;
