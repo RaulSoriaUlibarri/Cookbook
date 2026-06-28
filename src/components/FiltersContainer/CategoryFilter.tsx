@@ -4,8 +4,6 @@ import { fetchCategories } from "@/server/actions";
 import { useQuery } from "@tanstack/react-query";
 import { useState, useEffect } from "react";
 import IconSelector from "../UI/IconSelector";
-import MealsList from "../UI/MealsList";
-import MaxWidthWrapper from "../MaxWidthWrapper";
 
 type Categoria = {
   idCategory: string;
@@ -55,9 +53,6 @@ const CategoryFilter = () => {
             </button>
           ))}
         </div>
-        <MaxWidthWrapper>
-          <MealsList category={selectedCategory} />
-        </MaxWidthWrapper>
       </>
     );
   }
