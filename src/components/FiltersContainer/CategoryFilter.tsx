@@ -3,8 +3,8 @@
 import { fetchCategories } from "@/server/actions";
 import { useQuery } from "@tanstack/react-query";
 import { useState, useEffect } from "react";
-import IconSelector from "./IconSelector";
-import MealsList from "./MealsList";
+import IconSelector from "../UI/IconSelector";
+import MealsList from "../UI/MealsList";
 import MaxWidthWrapper from "../MaxWidthWrapper";
 
 type Categoria = {
@@ -14,7 +14,7 @@ type Categoria = {
   strCategoryDescription: string;
 };
 
-export default function CategorySelect() {
+const CategoryFilter = () => {
   const { data, error, isLoading } = useQuery<Categoria[]>({
     queryFn: fetchCategories,
     queryKey: ["categories"],
@@ -61,4 +61,6 @@ export default function CategorySelect() {
       </>
     );
   }
-}
+};
+
+export default CategoryFilter;
