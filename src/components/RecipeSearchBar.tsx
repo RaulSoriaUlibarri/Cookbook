@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const mealsArr = ["Pizza", "Meatballs", "Hamburguer", "Rabbit"];
 
-const SearchBar = () => {
+const RecipeSearchBar = () => {
   const [results, setResults] = useState<string[]>([]);
 
   function handleSearch(e: React.ChangeEvent<HTMLInputElement>) {
@@ -36,4 +36,4 @@ const SearchBar = () => {
   );
 };
 
-export default SearchBar;
+export default RecipeSearchBar;
