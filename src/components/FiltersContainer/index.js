@@ -1,1 +1,1 @@
-export { default as CategoryFilter } from "./CategoryFilter";
+export { default as FilterSelect } from "./FilterSelect";
