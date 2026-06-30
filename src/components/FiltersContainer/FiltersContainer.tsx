@@ -35,7 +35,25 @@ const FiltersContainer = () => {
   //     setSelectedCategory(category);
   //   }
 
-  const dummyArray = ["Beef", "Dessert", "Pizza", "Good food", "Bad food"];
+  const dummyArray = [
+    "Beef",
+    "Dessert",
+    "Pizza",
+    "Good food",
+    "Bad food",
+    "l",
+    "fe",
+    "asd",
+    "as",
+    "ses",
+    "sefs",
+    "sefsd",
+    "sdfsefs",
+    "sefsdfa",
+    "sefsafefe",
+    "sefasdfaf",
+    "awefaerge",
+  ];
 
   function dummyFunction(categorieSelected: string) {
     console.log(categorieSelected, "This is your categorie selected");
@@ -45,7 +63,7 @@ const FiltersContainer = () => {
     <>
       <div className="flex justify-center">
         <FilterDropdown
-          label="Categorie"
+          label="Categories"
           options={dummyArray}
           handleChange={dummyFunction}
         />

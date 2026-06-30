@@ -5,8 +5,8 @@ const RecipesContainer = () => {
   return (
     <>
       <section>
-        <FiltersContainer />
         <MaxWidthWrapper>
+          <FiltersContainer />
           <RecipesDisplay category="Beef" />
         </MaxWidthWrapper>
       </section>
