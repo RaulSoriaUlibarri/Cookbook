@@ -14,7 +14,6 @@ const CategoryFilter = () => {
     staleTime: 1000 * 60 * 30,
     gcTime: 1000 * 60 * 15,
   });
-  console.log(data);
 
   const categoriesArray: string[] = [];
 
@@ -24,8 +23,6 @@ const CategoryFilter = () => {
       categoriesArray.push(cat);
     }
   }
-
-  console.log(categoriesArray);
 
   //   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
