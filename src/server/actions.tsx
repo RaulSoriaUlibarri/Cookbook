@@ -31,6 +31,18 @@ export async function fetchCountriesList() {
   return countries.slice(0, 20);
 }
 
+export async function fetchIngredientsList() {
+  const url = "https://www.themealdb.com/api/json/v1/1/list.php?i=list";
+  const response = await fetch(url);
+
+  if (!response.ok)
+    throw new Error(`Error fetching categories, info: ${response.statusText}`);
+  const data = await response.json();
+  console.log(data.meals.slice(0, 20), "fetchIngredientsList");
+  const ingredients = data.meals;
+  return ingredients.slice(0, 20);
+}
+
 export async function fetchCategoryMeals(categorySelected: String | null) {
   const url = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${categorySelected}`;
   const response = await fetch(url);
