@@ -1,6 +1,6 @@
 "use client";
 
-import { CategoryFilter, CountryFilter } from "./index";
+import { CategoryFilter, CountryFilter, IngredientFilter } from "./index";
 
 const FiltersContainer = () => {
   return (
@@ -8,6 +8,7 @@ const FiltersContainer = () => {
       <div className="flex justify-center">
         <CategoryFilter />
         <CountryFilter />
+        <IngredientFilter />
       </div>
     </>
   );
