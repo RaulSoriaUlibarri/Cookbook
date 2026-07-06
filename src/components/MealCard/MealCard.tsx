@@ -7,7 +7,6 @@ import {
   BookmarkMinus,
 } from "lucide-react";
 import { useState } from "react";
-import RecipeDialog from "./RecipeDialog/RecipeDialog";
 
 type MealCardProps = {
   id: string;
@@ -17,10 +16,10 @@ type MealCardProps = {
 };
 
 const MealCard = ({ id, img, name, category }: MealCardProps) => {
-  const [bookRecipe, setBookRecipe] = useState<boolean>(false);
+  const [open, setOpen] = useState(false);
 
   function saveRecipe() {
-    setBookRecipe((prevState) => !prevState);
+    //In progress
   }
 
   return (
@@ -35,47 +34,36 @@ const MealCard = ({ id, img, name, category }: MealCardProps) => {
 
       <p className="mt-1 text-lg text-gray-700 font-bold  ">{name}</p>
       <p className="mb-2 text-sm font-semibold text-slate-500">{category}</p>
-      <div className="mt-auto flex justify-between ">
-        <RecipeDialog id={id} />
-        {bookRecipe === false ? (
-          <div className="pl-3 group cursor-pointer">
-            <span className=" md:group-hover:hidden">
+      <div className="mt-auto flex h-10 justify-between ">
+        {/* <RecipeDialog id={id} /> */}
+        <button className="w-full rounded-xl border border-black hover:text-customPurple hover:border-customPurple dark:border-slate-600">
+          Read Recipe
+        </button>
+        <div
+          onMouseEnter={() => setOpen(true)}
+          onMouseLeave={() => setOpen(false)}
+          className="cursor-pointer"
+        >
+          {!open ? (
+            <span className=" ">
               <Bookmark
                 strokeWidth={0.5}
-                color="white"
+                color="black"
                 onClick={() => saveRecipe()}
-                className="w-12 h-12 md:h-10 md:w-10"
+                className="w-12 h-12"
               />
             </span>
-            <span className="hidden md:group-hover:block">
+          ) : (
+            <span className="">
               <BookmarkPlus
                 strokeWidth={0.5}
                 color={"#6D31EDFF"}
                 onClick={() => saveRecipe()}
-                className="w-12 h-12 md:h-10 md:w-10"
+                className="w-12 h-12"
               />
             </span>
-          </div>
-        ) : (
-          <div className="pl-3 group cursor-pointer">
-            <span className=" md:group-hover:hidden">
-              <BookmarkCheck
-                strokeWidth={1}
-                color={"#6D31EDFF"}
-                onClick={() => saveRecipe()}
-                className="w-12 h-12 md:h-10 md:w-10"
-              />
-            </span>
-            <span className="hidden md:group-hover:block">
-              <BookmarkMinus
-                strokeWidth={1}
-                color={"#6D31EDFF"}
-                onClick={() => saveRecipe()}
-                className="w-12 h-12 md:h-10 md:w-10"
-              />
-            </span>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </li>
   );
