@@ -19,13 +19,15 @@ const RecipesDisplay = ({ category }: RecipesDisplayProps) => {
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
+  const selectedMeals = data.slice(0, 16);
+
   return (
     <div className="mt-16">
       <h2 className="w-full font-lexend h-auto p-5 text-4xl text-center font-bold mb-5">
         Recipe Collection
       </h2>
       <ul className=" grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-4">
-        {data?.map((meal: any) => (
+        {selectedMeals?.map((meal: any) => (
           <MealCard
             key={meal.idMeal}
             id={meal.idMeal}
