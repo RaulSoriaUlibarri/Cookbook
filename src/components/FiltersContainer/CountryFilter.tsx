@@ -17,10 +17,6 @@ const CountryFilter = () => {
     gcTime: 1000 * 60 * 15,
   });
 
-  if (data) {
-    console.log(data[0], "countries");
-  }
-
   const countriesArray: string[] = [];
 
   if (data) {

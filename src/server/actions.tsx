@@ -5,7 +5,6 @@ export async function fetchCategories() {
   if (!response.ok)
     throw new Error(`Error fetching categories, info: ${response.statusText}`);
   const data = await response.json();
-  console.log(data, "fetCategories");
   return data.categories;
 }
 
@@ -16,7 +15,6 @@ export async function fetchCategoriesList() {
   if (!response.ok)
     throw new Error(`Error fetching categories, info: ${response.statusText}`);
   const data = await response.json();
-  console.log(data.meals, "fetchCategoriesList");
   return data.meals;
 }
 export async function fetchCountriesList() {
@@ -26,7 +24,6 @@ export async function fetchCountriesList() {
   if (!response.ok)
     throw new Error(`Error fetching categories, info: ${response.statusText}`);
   const data = await response.json();
-  console.log(data.meals.slice(0, 20), "fetchCategoriesList");
   const countries = data.meals;
   return countries.slice(0, 20);
 }
@@ -38,7 +35,6 @@ export async function fetchIngredientsList() {
   if (!response.ok)
     throw new Error(`Error fetching categories, info: ${response.statusText}`);
   const data = await response.json();
-  console.log(data.meals.slice(0, 20), "fetchIngredientsList");
   const ingredients = data.meals;
   return ingredients.slice(0, 20);
 }
@@ -50,7 +46,6 @@ export async function fetchCategoryMeals(categorySelected: String | null) {
   if (!response.ok)
     throw new Error(`Error fetching meals, info: ${response.statusText}`);
   const data = await response.json();
-  console.log(data, "fetchCategoryMeals");
   return data.meals;
 }
 
@@ -61,6 +56,5 @@ export async function fetchMeal(mealSelected: String) {
   if (!response.ok)
     throw new Error(`Error fetching meal, info: ${response.statusText}`);
   const data = await response.json();
-  console.log(data, "fetchMeal");
   return data.meals;
 }

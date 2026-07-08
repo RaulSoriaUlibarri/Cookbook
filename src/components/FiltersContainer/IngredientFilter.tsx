@@ -26,7 +26,6 @@ const IngredientFilter = () => {
       ingredientsArray.push(ingredient);
     }
   }
-  console.log(ingredientsArray, "ingredientsArray");
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
