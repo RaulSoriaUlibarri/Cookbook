@@ -57,8 +57,8 @@ const RecipesDisplay = ({ category }: RecipesDisplayProps) => {
       <ul
         className={
           listLayout === "grid"
-            ? "grid grid-cols-1 gap-8 mb-10 sm:grid-cols-2 md:grid-cols-3 md:gap-4 lg:grid-cols-3  lg:gap-8"
-            : ""
+            ? "grid grid-cols-1 gap-8 mb-10 sm:grid-cols-2 md:grid-cols-3 md:gap-4 lg:grid-cols-3 lg:gap-8"
+            : "flex flex-col gap-4"
         }
       >
         {paginatedData.map((meal: any) => (
@@ -69,9 +69,11 @@ const RecipesDisplay = ({ category }: RecipesDisplayProps) => {
             img={meal.strMealThumb}
             country={meal.strCountry}
             category={category}
+            variant={listLayout} // aquí decides grid o list
           />
         ))}
       </ul>
+
       <RecipesPagination
         handleChange={setCurrentPage}
         totalPages={numberOfPages}
