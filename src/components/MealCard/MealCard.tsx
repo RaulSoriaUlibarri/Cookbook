@@ -7,10 +7,19 @@ type MealCardProps = {
   id: string;
   img: string;
   name: string;
+  country: string;
   category: string | null;
+  variant?: string;
 };
 
-const MealCard = ({ id, img, name, category }: MealCardProps) => {
+const MealCard = ({
+  id,
+  img,
+  name,
+  category,
+  country,
+  variant = "grid",
+}: MealCardProps) => {
   const [open, setOpen] = useState(false);
 
   function saveRecipe() {
@@ -20,47 +29,66 @@ const MealCard = ({ id, img, name, category }: MealCardProps) => {
   return (
     <li
       id={id}
-      className="relative flex flex-col rounded-lg shadow-md border border-gray-200 dark:border-slate-500 cursor-pointer"
+      className={`relative rounded-lg shadow-md border border-gray-200 dark:border-slate-500 cursor-pointer 
+        ${variant === "grid" ? "flex flex-col" : "flex flex-row items-center p-2 gap-4"}`}
     >
-      <div className="max-h-[250px] ">
+      {/* Imagen */}
+      <div
+        className={
+          variant === "grid"
+            ? "max-h-[250px] w-full"
+            : "w-40 h-28 flex-shrink-0"
+        }
+      >
         <img
-          className="rounded-tl-lg rounded-tr-lg w-full h-full object-fill"
+          className={`object-cover rounded-lg 
+            ${variant === "grid" ? "rounded-tl-lg rounded-tr-lg w-full h-full" : "w-full h-full"}`}
           src={img}
           alt={name}
         />
       </div>
-      <div className="p-2">
-        <p className="mt-1 text-xl text-gray-700 font-bold  ">{name}</p>
-        <p className="mb-2 text-sm font-semibold text-slate-500">{category}</p>
-        <button className="absolute top-3 right-3 flex h-10 justify-between cursor-pointer">
-          <div
-            onMouseEnter={() => setOpen(true)}
-            onMouseLeave={() => setOpen(false)}
-          >
-            {!open ? (
-              <span className=" ">
-                <Bookmark
-                  fill="white"
-                  strokeWidth={0.2}
-                  color="black"
-                  onClick={() => saveRecipe()}
-                  className="w-12 h-12"
-                />
-              </span>
-            ) : (
-              <span className="">
-                <BookmarkPlus
-                  strokeWidth={0.8}
-                  color={"#6D31EDFF"}
-                  onClick={() => saveRecipe()}
-                  className="w-12 h-12"
-                  fill="white"
-                />
-              </span>
-            )}
-          </div>
-        </button>
+
+      {/* Contenido */}
+      <div
+        className={
+          variant === "grid"
+            ? "p-2 my-auto"
+            : "flex flex-col justify-between flex-1"
+        }
+      >
+        <p className="mt-1 text-xl text-gray-700 font-bold">{name}</p>
+        <p className="mb-2 text-sm font-semibold text-slate-800">
+          {country} - <span>{category}</span>
+        </p>
       </div>
+
+      {/* Botón de guardar */}
+      <button
+        className={`absolute ${variant === "grid" ? "top-3 right-3" : "top-2 right-2"} flex h-10 cursor-pointer`}
+      >
+        <div
+          onMouseEnter={() => setOpen(true)}
+          onMouseLeave={() => setOpen(false)}
+        >
+          {!open ? (
+            <Bookmark
+              fill="white"
+              strokeWidth={0.2}
+              color="black"
+              onClick={() => saveRecipe()}
+              className="w-8 h-8"
+            />
+          ) : (
+            <BookmarkPlus
+              strokeWidth={0.8}
+              color={"#6D31EDFF"}
+              onClick={() => saveRecipe()}
+              className="w-8 h-8"
+              fill="white"
+            />
+          )}
+        </div>
+      </button>
     </li>
   );
 };
