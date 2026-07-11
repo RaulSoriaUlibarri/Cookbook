@@ -2,6 +2,7 @@
 
 import { Bookmark, BookmarkPlus } from "lucide-react";
 import { useState } from "react";
+import Link from "next/link";
 
 type MealCardProps = {
   id: string;
@@ -30,9 +31,9 @@ const MealCard = ({
     <li
       id={id}
       className={`relative rounded-lg shadow-md border border-gray-200 dark:border-slate-500 cursor-pointer 
-        ${variant === "grid" ? "flex flex-col" : "flex flex-row items-center p-2 gap-4"}`}
+          ${variant === "grid" ? "flex flex-col" : "flex flex-row items-center p-2 gap-4"}`}
     >
-      {/* Imagen */}
+      <Link href={`/recipe/${id}`} className="absolute inset-0 z-10"></Link>
       <div
         className={
           variant === "grid"
@@ -41,14 +42,13 @@ const MealCard = ({
         }
       >
         <img
-          className={`object-cover rounded-lg 
-            ${variant === "grid" ? "rounded-tl-lg rounded-tr-lg w-full h-full" : "w-full h-full"}`}
+          className={`object-cover 
+            ${variant === "grid" ? "rounded-tl-lg rounded-tr-lg w-full h-full" : "rounded-lg  w-full h-full"}`}
           src={img}
           alt={name}
         />
       </div>
 
-      {/* Contenido */}
       <div
         className={
           variant === "grid"
@@ -61,8 +61,6 @@ const MealCard = ({
           {country} - <span>{category}</span>
         </p>
       </div>
-
-      {/* Botón de guardar */}
       <button
         className={`absolute ${variant === "grid" ? "top-3 right-3" : "top-2 right-2"} flex h-10 cursor-pointer`}
       >
