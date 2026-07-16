@@ -7,7 +7,15 @@ import ThemeProviders from "@/utlis/providers/themeProvider";
 import { Theme } from "@radix-ui/themes";
 import { NavBar } from "@/components/index";
 
-const inter = Inter({ subsets: ["latin"] });
+import { Quintessential } from "next/font/google";
+
+const quintessential = Quintessential({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-quintessential",
+});
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
   title: "Recetario | Portafolio de Raúl Soria",
@@ -22,7 +30,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body
+        className={`${inter.variable} ${quintessential.variable} font-sans`}
+      >
         <ThemeProviders>
           <ReactQueryProvider>
             <header className="bg-white dark:bg-black">

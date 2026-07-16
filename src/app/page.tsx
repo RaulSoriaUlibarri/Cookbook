@@ -22,7 +22,6 @@ export default async function Home() {
         </div>
       </div>
       <MaxWidthWrapper className="mb-12 mt-5 flex flex-col items-center justify-center text-center">
-        {/* <HydrationBoundary state={dehydrate(queryClient)}></HydrationBoundary> */}
         <div className="md:flex md:justify-center md:items-center lg:px-20 lg:mt-10">
           <div>
             <h2 className="my-3 px-5 font-bold text-xl text-gray-900 md:hidden lg:text-3xl">

@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -37,4 +37,8 @@
 .embla__slide {
   flex: 0 0 100%;
   min-width: 0;
+}
+
+.quintessential {
+  font-family: var(--font-quintessential);
 }
