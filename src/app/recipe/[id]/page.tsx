@@ -9,7 +9,7 @@ export default function RecipePage() {
   const recipeId = params.id as string;
 
   return (
-    <div className="p-6">
+    <div className="">
       <RecipeContainer id={recipeId} />
       <Footer />
     </div>
