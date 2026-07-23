@@ -40,7 +40,7 @@ const RecipeContainer = ({ id }: RecipeContainerProps) => {
     : null;
 
   return (
-    <section className="bg-gradient-to-b from-green-50 to-green-100 pb-10 pt-20">
+    <section className="bg-green-50 pb-10 pt-20">
       <MaxWidthWrapper>
         <div className="mt-4">
           <Link
@@ -106,7 +106,7 @@ const RecipeContainer = ({ id }: RecipeContainerProps) => {
         </div>
 
         {/* Ingredientes */}
-        <div className="p-6 mb-10 mx-auto max-w-1/3">
+        <div className="p-6  mx-auto max-w-2/3 ">
           <h3 className="text-2xl font-bold text-yellow-800 mb-4 border-b pb-5 mb-10">
             Ingredients
           </h3>
@@ -123,16 +123,16 @@ const RecipeContainer = ({ id }: RecipeContainerProps) => {
               </li>
             ))}
           </ul>
-        </div>
 
-        {/* Instrucciones */}
-        <div className="bg-orange-100 rounded-lg p-6 shadow-md">
-          <h3 className="text-2xl font-bold text-orange-800 mb-4">
-            Instructions
-          </h3>
-          <p className="whitespace-pre-line leading-relaxed text-gray-800 text-lg">
-            {meal.strInstructions}
-          </p>
+          {/* Instrucciones */}
+          <div className="text-yellow-800 p-2 mt-10 ">
+            <h3 className="text-2xl font-bold border-b pb-5 mb-4">
+              Instructions
+            </h3>
+            <p className="whitespace-pre-line leading-relaxed text-gray-800 text-lg">
+              {meal.strInstructions}
+            </p>
+          </div>
         </div>
       </MaxWidthWrapper>
     </section>
