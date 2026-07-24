@@ -13,15 +13,19 @@ const NavBar = () => {
 
   return (
     <>
-      <nav className="sticky inset-x-0 top-0 mx-auto z-30 w-2/3 bg-transparent backdrop-blur-lg transition-all text-gray-600 text-sm dark:text-white">
+      <nav className="sticky inset-x-0 top-0 mx-auto flex items-center z-30 w-2/3 h-[80px] bg-transparent backdrop-blur-lg transition-all text-gray-600 text-sm dark:text-white">
         <MaxWidthWrapper className="w-full max-w-none md:px-0">
           <div className="flex h-14 items-center justify-between md:justify-between px-5 ">
-            <div className="flex items-center">
+            <div className="flex items-center max-w-[130px]">
               <Link
                 href="/"
                 className="flex mr-4 z-40 text-xl md:text-3xl font-semibold hover:cursor-pointer"
               >
-                <span>CookingBook</span>
+                <img
+                  className=" object-fill"
+                  src="/images/logo.png"
+                  alt="hero"
+                />
               </Link>
             </div>
             <div className="flex justify-end items-center w-auto">
