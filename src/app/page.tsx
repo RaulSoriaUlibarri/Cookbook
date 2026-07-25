@@ -5,18 +5,13 @@ import Footer from "@/components/UI/Footer";
 
 export default async function Home() {
   return (
-    <>
-      <div className="h-[720px]">
-        <img
-          className="relative h-full w-full object-fill"
-          src="/images/mainHero2.jpg"
-          alt="hero"
-        />
-        <div className="absolute top-1/4 md:top-[300px] md:left-1/4 text-center text-white">
+    <section className="bg-[#ACE1AF]">
+      <div className="flex items-center justify-end h-[720px] bg-[url(/images/landing_page_hero.png)] bg-cover bg-center bg-no-repeat">
+        <div className="w-1/2 text-center text-black">
           <h2 className="text-4xl md:text-6xl font-bold p-2 my-5">
             Find Your Favorite Recipes
           </h2>
-          <p className="text-xl md:text-2xl ">
+          <p className="text-xl md:text-2xl">
             Discover, save, and share delicious recipes from around the world.
           </p>
         </div>
@@ -44,6 +39,6 @@ export default async function Home() {
         </div>
       </MaxWidthWrapper>
       <Footer />
-    </>
+    </section>
   );
 }
