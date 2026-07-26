@@ -6,9 +6,9 @@ import Footer from "@/components/UI/Footer";
 export default async function Home() {
   return (
     <section className="bg-[#ACE1AF]">
-      <div className="flex items-center justify-end h-[720px] bg-[url(/images/landing_page_hero.png)] bg-cover bg-center bg-no-repeat">
+      <div className="flex items-center justify-end h-[400px] bg-[url(/images/landing_page_hero.png)] bg-cover bg-center bg-no-repeat">
         <div className="w-1/2 text-center text-black">
-          <h2 className="text-4xl md:text-6xl font-bold p-2 my-5">
+          <h2 className="font-roboto-slab text-4xl md:text-6xl font-bold p-2 my-5">
             Find Your Favorite Recipes
           </h2>
           <p className="text-xl md:text-2xl">

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Quintessential, Roboto_Slab } from "next/font/google";
 import ReactQueryProvider from "@/utlis/providers/ReactQueryProvider";
 import "./globals.css";
 import "@radix-ui/themes/styles.css";
@@ -7,7 +7,7 @@ import ThemeProviders from "@/utlis/providers/themeProvider";
 import { Theme } from "@radix-ui/themes";
 import { NavBar } from "@/components/index";
 
-import { Quintessential } from "next/font/google";
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 const quintessential = Quintessential({
   subsets: ["latin"],
@@ -15,7 +15,11 @@ const quintessential = Quintessential({
   variable: "--font-quintessential",
 });
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const robotoSlab = Roboto_Slab({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-roboto-slab",
+});
 
 export const metadata: Metadata = {
   title: "Recetario | Portafolio de Raúl Soria",
@@ -31,7 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${quintessential.variable} font-sans`}
+        className={`${inter.variable} ${quintessential.variable} ${robotoSlab.variable} font-sans`}
       >
         <ThemeProviders>
           <ReactQueryProvider>
