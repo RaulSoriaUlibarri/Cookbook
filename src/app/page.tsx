@@ -1,5 +1,4 @@
 import MaxWidthWrapper from "../components/MaxWidthWrapper";
-
 import HeroCarousel from "@/components/UI/HeroCarousel";
 import Footer from "@/components/UI/Footer";
 
@@ -7,7 +6,7 @@ export default async function Home() {
   return (
     //bg-[#ACE1AF] provisional.
     <section className="bg-[#f8f8f8]">
-      <MaxWidthWrapper className="mb-12 mt-5 flex flex-col items-center justify-center text-center">
+      <MaxWidthWrapper className="mb-12 flex flex-col items-center justify-center text-center">
         <div className="flex w-full items-center justify-end h-[400px] bg-[url(/images/landing_page_hero.png)] bg-cover bg-center bg-no-repeat">
           <div className="w-1/2 text-center text-black">
             <h2 className="font-roboto-slab text-4xl md:text-6xl font-bold p-2 my-5">
