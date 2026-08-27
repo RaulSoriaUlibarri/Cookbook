@@ -42,3 +42,11 @@
 .quintessential {
   font-family: var(--font-quintessential);
 }
+
+:root {
+  --font-roboto-slab: "Roboto Slab", serif;
+}
+
+.font-roboto-slab {
+  font-family: var(--font-roboto-slab);
+}
