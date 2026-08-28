@@ -1,13 +1,15 @@
 import MaxWidthWrapper from "../components/MaxWidthWrapper";
 import HeroCarousel from "@/components/UI/HeroCarousel";
 import Footer from "@/components/UI/Footer";
+import { MealCarousel } from "@/components";
 
 export default async function Home() {
   return (
     //bg-[#ACE1AF] provisional.
     <section className="bg-[#f8f8f8]">
-      <MaxWidthWrapper className="mb-12 flex flex-col items-center justify-center text-center">
-        <div className="flex w-full items-center justify-end h-[400px] bg-[url(/images/landing_page_hero.png)] bg-cover bg-center bg-no-repeat">
+      <MaxWidthWrapper className="mb-12 flex flex-col items-stretch text-center max-w-[1266px]">
+        {" "}
+        <div className="flex w-full items-center justify-end h-[400px] bg-[url(/images/landing_page_hero.png)] bg-cover bg-center bg-no-repeat mb-10">
           <div className="w-1/2 text-center text-black">
             <h2 className="font-roboto-slab text-4xl md:text-6xl font-bold p-2 my-5">
               Find Your Favorite Recipes
@@ -16,6 +18,21 @@ export default async function Home() {
               Discover, save, and share delicious recipes from around the world.
             </p>
           </div>
+        </div>
+        <div className="w-full">
+          <MealCarousel
+            title="Sweet moments, endless smiles"
+            category="dessert"
+          />
+        </div>
+        <div className="w-full">
+          <MealCarousel title="Where tradition meets taste" category="beef" />
+        </div>
+        <div className="w-full">
+          <MealCarousel
+            title="Greens that fuel your day"
+            category="Vegetarian"
+          />
         </div>
         <div className="md:flex md:justify-center md:items-center lg:px-20 lg:mt-10">
           <div>
