@@ -11,6 +11,7 @@ type MealCardProps = {
   country: string;
   category?: string | null;
   variant?: string;
+  className?: string;
 };
 
 const MealCard = ({
@@ -20,6 +21,7 @@ const MealCard = ({
   category,
   country,
   variant = "grid",
+  className = "",
 }: MealCardProps) => {
   const [open, setOpen] = useState(false);
 
@@ -31,7 +33,7 @@ const MealCard = ({
     <li
       id={id}
       className={`relative rounded-lg shadow-md border border-gray-200 dark:border-slate-500 cursor-pointer 
-          ${variant === "grid" ? "flex flex-col" : "flex flex-row items-center p-2 gap-4"}`}
+          ${variant === "grid" ? "flex flex-col" : "flex flex-row items-center p-2 gap-4"} ${className}`}
     >
       <Link href={`/recipe/${id}`} className="absolute inset-0 z-10"></Link>
       <div
@@ -58,7 +60,7 @@ const MealCard = ({
       >
         <p className="mt-1 text-xl text-gray-700 font-bold">{name}</p>
         <p className="mb-2 text-sm font-semibold text-slate-800">
-          {country} - <span>{category}</span>
+          {country} {category ? -(<span>{category}</span>) : ""}
         </p>
       </div>
       <button
