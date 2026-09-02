@@ -58,7 +58,15 @@ const MealCard = ({
             : "flex flex-col justify-between flex-1"
         }
       >
-        <p className="mt-1 text-xl text-gray-700 font-bold">{name}</p>
+        <p
+          className={
+            className != ""
+              ? "mt-1 text-lg text-gray-700 font-bold"
+              : "mt-1 text-xl text-gray-700 font-bold"
+          }
+        >
+          {name}
+        </p>
         <p className="mb-2 text-sm font-semibold text-slate-800">
           {country} {category ? -(<span>{category}</span>) : ""}
         </p>
