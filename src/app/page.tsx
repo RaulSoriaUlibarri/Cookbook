@@ -28,17 +28,28 @@ export default async function Home() {
         <div className="w-full">
           <MealCarousel
             featured
-            title="Sweet moments, endless smiles"
-            category="dessert"
+            title="Vegan for Everyone: Delicious, inclusive, and inspiring"
+            category="vegan"
           />
-        </div>
-        <div className="w-full">
           <MealCarousel title="Where tradition meets taste" category="beef" />
-        </div>
-        <div className="w-full">
           <MealCarousel
             title="Greens that fuel your day"
             category="Vegetarian"
+          />
+          <MealCarousel title="Chicken-based favorites" ingredient="chicken" />
+          <MealCarousel
+            featured
+            title="Sweet moments, endless smiles"
+            category="dessert"
+          />
+          <MealCarousel
+            title="Spice Lovers! Global chili favorites"
+            ingredient="chilli"
+          />
+
+          <MealCarousel
+            title="Milk Lovers: Creamy classics worldwide"
+            ingredient="milk"
           />
         </div>
         <div className="md:flex md:justify-center md:items-center lg:px-20 lg:mt-10">
