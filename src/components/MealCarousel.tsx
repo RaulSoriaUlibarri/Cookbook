@@ -45,7 +45,7 @@ const MealCarousel = ({ category, title }: MealCarouselProp) => {
   };
 
   return (
-    <div className="mb-6">
+    <div className="my-6">
       <h2 className="text-left text-2xl font-bold text-gray-800 mb-4">
         {title}
       </h2>
