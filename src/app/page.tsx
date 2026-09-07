@@ -27,6 +27,7 @@ export default async function Home() {
         </div>
         <div className="w-full">
           <MealCarousel
+            featured
             title="Sweet moments, endless smiles"
             category="dessert"
           />
