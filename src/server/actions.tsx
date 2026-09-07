@@ -58,3 +58,13 @@ export async function fetchMeal(mealSelected: String) {
   const data = await response.json();
   return data.meals;
 }
+
+export async function fetchByIngredients(mealSelected: String) {
+  const url = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${mealSelected}`;
+  const response = await fetch(url);
+
+  if (!response.ok)
+    throw new Error(`Error fetching meal, info: ${response.statusText}`);
+  const data = await response.json();
+  return data.meals;
+}

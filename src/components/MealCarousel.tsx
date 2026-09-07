@@ -3,14 +3,19 @@
 import { useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import MealCard from "./MealCard/MealCard";
-import { fetchCategoryMeals } from "@/server/actions";
+import { fetchCategoryMeals, fetchByIngredients } from "@/server/actions";
 import { useQuery } from "@tanstack/react-query";
 
-type MealCarouselProp = {
-  category: string;
+type MealCarouselBaseProps = {
   title: string;
   featured?: boolean;
 };
+
+type MealCarouselProp = MealCarouselBaseProps &
+  (
+    | { category: string; ingredient?: never }
+    | { ingredient: string; category?: never }
+  );
 
 type Meal = {
   idMeal: string;
@@ -21,22 +26,34 @@ type Meal = {
 
 const MealCarousel = ({
   category,
+  ingredient,
   title,
   featured = false,
 }: MealCarouselProp) => {
   const scrollRef = useRef<HTMLUListElement>(null);
 
+  const filterType = category ? "category" : "ingredient";
+  const filterValue = category ?? ingredient ?? "";
+
   const { data, error, isLoading } = useQuery({
-    queryFn: () => fetchCategoryMeals(category),
-    queryKey: ["meals", category],
-    enabled: !!category,
+    queryFn: async () => {
+      const result = category
+        ? await fetchCategoryMeals(category)
+        : await fetchByIngredients(ingredient!);
+      // TheMealDB returns null (not []) when an ingredient/category has no matches
+      return result ?? [];
+    },
+    queryKey: ["meals", filterType, filterValue],
+    enabled: !!filterValue,
     staleTime: 1000 * 60 * 30,
   });
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
-  const meals: Meal[] = data.slice(0, 10);
+  const meals: Meal[] = (data ?? []).slice(0, 10);
+
+  if (meals.length === 0) return null;
 
   const scrollByPage = (direction: "prev" | "next") => {
     const container = scrollRef.current;
