@@ -7,17 +7,23 @@ export default async function Home() {
   return (
     //bg-[#ACE1AF] provisional.
     <section className="bg-[#f8f8f8]">
-      <MaxWidthWrapper className="mb-12 flex flex-col items-stretch text-center max-w-[1266px]">
+      <MaxWidthWrapper className=" flex flex-col items-stretch text-center max-w-[1266px]">
         {" "}
-        <div className="flex w-full items-center justify-end h-[400px] bg-[url(/images/landing_page_hero.png)] bg-cover bg-center bg-no-repeat mb-10">
+        <div className="flex w-full items-center justify-end h-[400px] bg-[url(/images/landing_page_hero.png)] bg-cover bg-center bg-no-repeat">
           <div className="w-1/2 text-center text-black">
             <h2 className="font-roboto-slab text-4xl md:text-6xl font-bold p-2 my-5">
               Find Your Favorite Recipes
             </h2>
-            <p className="text-xl md:text-2xl">
+            <p className="text-x md:text-2xl">
               Discover, save, and share delicious recipes from around the world.
             </p>
           </div>
+        </div>
+        <div className="py-5 flex justify-center bg-green-700 text-xl text-white ">
+          <strong>
+            Explore thousands of international recipes — thanks to TheMealDB
+            API.
+          </strong>
         </div>
         <div className="w-full">
           <MealCarousel
