@@ -37,6 +37,7 @@ export default async function Home() {
             category="Vegetarian"
           />
           <MealCarousel title="Chicken-based favorites" ingredient="chicken" />
+          <HeroCarousel />
           <MealCarousel
             featured
             title="Sweet moments, endless smiles"
@@ -51,26 +52,6 @@ export default async function Home() {
             title="Milk Lovers: Creamy classics worldwide"
             ingredient="milk"
           />
-        </div>
-        <div className="md:flex md:justify-center md:items-center lg:px-20 lg:mt-10">
-          <div>
-            <h2 className="my-3 px-5 font-bold text-xl text-gray-900 md:hidden lg:text-3xl">
-              Discover and Cook your Favorite Recipes
-            </h2>
-            <HeroCarousel />
-          </div>
-          <div className="mx-7 my-5 h-full md:ml-5 md:mr-0">
-            <h2 className="hidden mb-5 text-2xl font-bold text-gray-900 md:block md:text-left lg:mb-20">
-              Discover and Cook your Favorite Recipes
-            </h2>
-            <p className="text-gray-700 md:text-left lg:text-lg">
-              Explore a wide variety of carefully selected recipes selected for
-              every occasion. Whether you're a beginner or experienced chef,
-              you'll find inspiration for every meal. meal. Save your favorites,
-              share with friends, and turn each dish into a masterpiece. each
-              dish into a masterpiece.
-            </p>
-          </div>
         </div>
       </MaxWidthWrapper>
       <Footer />
