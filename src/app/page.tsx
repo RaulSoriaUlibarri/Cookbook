@@ -6,10 +6,10 @@ import { MealCarousel } from "@/components";
 export default async function Home() {
   return (
     //bg-[#ACE1AF] provisional.
-    <section className="bg-[#f8f8f8]">
+    <section className="bg-[#f8f8f8] dark:bg-emerald-950">
       <MaxWidthWrapper className=" flex flex-col items-stretch text-center max-w-[1266px]">
         {" "}
-        <div className="flex w-full items-center justify-end h-[400px] bg-[url(/images/landing_page_hero.png)] bg-cover bg-center bg-no-repeat">
+        <div className="flex w-full items-center justify-end h-[400px] bg-[url(/images/landing_page_hero1.png)] bg-cover bg-center bg-no-repeat">
           <div className="w-1/2 text-center text-black">
             <h2 className="font-roboto-slab text-4xl md:text-6xl font-bold p-2 my-5">
               Find Your Favorite Recipes
