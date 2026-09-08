@@ -7,14 +7,13 @@ const Footer = () => {
     <footer>
       <div className="h-[384px] flex flex-col justify-center text-center ">
         <h3 className="text-3xl md:text-5xl text-customPurple font-lexend font-bold py-5">
-          Join the Recipe Revolution
+          Your recipes, your way
         </h3>
         <p className="text-lg text-gray-600 py-5 mb-5">
-          Unlock a world of healthy and delicious recipes. Sign up now to start
-          your culinary adventure!
+          Log in to personalize your culinary journey.
         </p>
         <button className="w-fit mx-auto text-lg leading-7 text-white bg-customPurple rounded-md py-2 px-8 hover:bg-customPurple600">
-          Sign Up
+          Join now
         </button>
       </div>
       <div className="w-full h-auto px-10 border-t border-t-gray-200 dark:border-none">
