@@ -6,13 +6,13 @@ const Footer = () => {
   return (
     <footer>
       <div className="h-[384px] flex flex-col justify-center text-center ">
-        <h3 className="text-3xl md:text-5xl text-customPurple font-lexend font-bold py-5">
+        <h3 className="text-3xl md:text-5xl text-emerald-950 font-lexend font-bold py-5">
           Your recipes, your way
         </h3>
-        <p className="text-lg text-gray-600 py-5 mb-5">
+        <p className="text-lg py-5 mb-5">
           Log in to personalize your culinary journey.
         </p>
-        <button className="w-fit mx-auto text-lg leading-7 text-white bg-customPurple rounded-md py-2 px-8 hover:bg-customPurple600">
+        <button className="w-fit mx-auto text-lg leading-7 text-white bg-emerald-950 rounded-md py-2 px-8 hover:bg-customPurple600">
           Join now
         </button>
       </div>
