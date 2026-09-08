@@ -13,7 +13,7 @@ const Footer = () => {
         <p className="text-lg py-5 mb-5">
           Log in to personalize your culinary journey.
         </p>
-        <button className="w-fit mx-auto text-lg leading-7 text-white bg-emerald-950 rounded-md py-2 px-8 hover:bg-emerald-800 hover:cursor-pointer">
+        <button className="w-fit mx-auto text-lg leading-7 text-white bg-emerald-600 rounded-md py-2 px-8 hover:bg-emerald-700 hover:cursor-pointer">
           Join now
         </button>
       </div>
