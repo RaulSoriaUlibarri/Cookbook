@@ -1,11 +1,12 @@
 "use client";
 
 import { useRef } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import MealCard from "./MealCard/MealCard";
 import SkeletonCard from "./MealCard/SkeletonCard";
 import { fetchCategoryMeals, fetchByIngredients } from "@/server/actions";
 import { useQuery } from "@tanstack/react-query";
+import Link from "next/link";
 
 type MealCarouselBaseProps = {
   title: string;
@@ -80,21 +81,30 @@ const MealCarousel = ({
           : ""
       }`}
     >
-      <div className="flex items-center gap-3 mb-4">
-        <h2
-          className={`text-left font-bold text-emerald-900 dark:text-white ${
-            featured
-              ? "text-3xl md:text-4xl text-emerald-700 dark:text-emerald-400"
-              : "text-2xl"
-          }`}
+      <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center gap-3">
+          <h2
+            className={`text-left font-bold text-emerald-900 dark:text-white ${
+              featured
+                ? "text-3xl md:text-4xl text-emerald-700 dark:text-emerald-400"
+                : "text-2xl"
+            }`}
+          >
+            {title}
+          </h2>
+          {featured && (
+            <span className="rounded-full bg-emerald-600 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">
+              Featured
+            </span>
+          )}
+        </div>
+        <Link
+          href=""
+          className="group inline-flex flex-shrink-0 items-center gap-1 whitespace-nowrap pr-1 font-bold text-emerald-700 transition-colors hover:text-emerald-500"
         >
-          {title}
-        </h2>
-        {featured && (
-          <span className="rounded-full bg-emerald-600 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">
-            Featured
-          </span>
-        )}
+          See all
+          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+        </Link>
       </div>
 
       <div className="relative">

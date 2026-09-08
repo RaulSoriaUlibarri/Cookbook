@@ -26,11 +26,7 @@ export default async function Home() {
           </strong>
         </div>
         <div className="w-full">
-          <MealCarousel
-            featured
-            title="Vegan for Everyone: Delicious, inclusive, and inspiring"
-            category="vegan"
-          />
+          <MealCarousel featured title="Vegan favorites" category="vegan" />
           <MealCarousel title="Where tradition meets taste" category="beef" />
           <MealCarousel
             title="Greens that fuel your day"
