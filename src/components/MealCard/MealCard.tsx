@@ -24,15 +24,22 @@ const MealCard = ({
   className = "",
 }: MealCardProps) => {
   const [open, setOpen] = useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   function saveRecipe() {
     //In progress
   }
 
+  function toggleExpanded(e: React.MouseEvent) {
+    e.preventDefault();
+    e.stopPropagation();
+    setExpanded((prev) => !prev);
+  }
+
   return (
     <li
       id={id}
-      className={`relative rounded-lg shadow-md border border-gray-200 dark:border-slate-500 cursor-pointer 
+      className={`relative rounded-lg shadow-md dark:shadow-slate-900/40 border border-gray-200 dark:border-none cursor-pointer 
           ${variant === "grid" ? "flex flex-col" : "flex flex-row items-center p-2 gap-4"} ${className}`}
     >
       <Link href={`/recipe/${id}`} className="absolute inset-0 z-10"></Link>
@@ -59,15 +66,18 @@ const MealCard = ({
         }
       >
         <p
-          className={
-            className != ""
-              ? "mt-1 text-lg text-gray-700 font-bold"
-              : "mt-1 text-xl text-gray-700 font-bold"
-          }
+          onClick={toggleExpanded}
+          className={`relative z-20 mt-1 font-bold text-gray-700 dark:text-white ${
+            className != "" ? "text-lg" : "text-xl"
+          } ${
+            expanded
+              ? ""
+              : `line-clamp-2 ${className != "" ? "min-h-[3.25rem]" : "min-h-[3.5rem]"}`
+          }`}
         >
           {name}
         </p>
-        <p className="mb-2 text-sm font-semibold text-slate-800">
+        <p className="mb-2 text-sm font-semibold text-slate-800 dark:text-slate-300">
           {country} {category ? -(<span>{category}</span>) : ""}
         </p>
       </div>
@@ -84,14 +94,14 @@ const MealCard = ({
               strokeWidth={0.2}
               color="black"
               onClick={() => saveRecipe()}
-              className="w-8 h-8"
+              className="w-8 h-8 dark:drop-shadow-md"
             />
           ) : (
             <BookmarkPlus
               strokeWidth={0.8}
               color={"#6D31EDFF"}
               onClick={() => saveRecipe()}
-              className="w-8 h-8"
+              className="w-8 h-8 dark:drop-shadow-md"
               fill="white"
             />
           )}
