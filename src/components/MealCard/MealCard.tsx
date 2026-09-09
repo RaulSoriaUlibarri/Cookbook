@@ -24,9 +24,16 @@ const MealCard = ({
   className = "",
 }: MealCardProps) => {
   const [open, setOpen] = useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   function saveRecipe() {
     //In progress
+  }
+
+  function toggleExpanded(e: React.MouseEvent) {
+    e.preventDefault();
+    e.stopPropagation();
+    setExpanded((prev) => !prev);
   }
 
   return (
@@ -59,11 +66,14 @@ const MealCard = ({
         }
       >
         <p
-          className={
-            className != ""
-              ? "mt-1 text-lg text-gray-700 dark:text-white font-bold"
-              : "mt-1 text-xl text-gray-700 dark:text-white font-bold"
-          }
+          onClick={toggleExpanded}
+          className={`relative z-20 mt-1 font-bold text-gray-700 dark:text-white ${
+            className != "" ? "text-lg" : "text-xl"
+          } ${
+            expanded
+              ? ""
+              : `line-clamp-2 ${className != "" ? "min-h-[3.25rem]" : "min-h-[3.5rem]"}`
+          }`}
         >
           {name}
         </p>
