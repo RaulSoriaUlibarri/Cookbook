@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { usePathname } from "next/navigation";
 // import { useUser } from "@auth0/nextjs-auth0/client";
 import Link from "next/link";
 import MaxWidthWrapper from "../MaxWidthWrapper";
@@ -9,7 +9,7 @@ import { CookingPot, ChefHat, LogIn, LogOut } from "lucide-react";
 
 const NavBar = () => {
   // const { user } = useUser();
-  const [activeTab, setActiveTab] = useState<string>("");
+  const pathname = usePathname();
 
   return (
     <>
@@ -30,32 +30,30 @@ const NavBar = () => {
             </div>
             <div className="flex justify-end items-center w-auto">
               <MobileNav isAuth={false} />
-              <div className="hidden sm:flex text-sm">
+              <div className="hidden h-full flex items-center sm:flex text-sm">
                 <Link
-                  onClick={() => setActiveTab("tab1")}
                   href="/directory"
-                  className={`h-[52px] px-3 flex items-center leading-6 hover:border-b-2 hover:border-customPurple hover:text-customPurple ${
-                    activeTab === "tab1"
-                      ? "text-customPurple font-bold border-b-2 border-customPurple"
+                  className={`h-full px-3 flex items-center leading-6 hover:border-b-2 hover:border-emerald-600 hover:text-emerald-600 ${
+                    pathname === "/directory"
+                      ? "text-emerald-600 font-bold border-b-2 border-emerald-600"
                       : "font-semibold"
                   } `}
                 >
                   <CookingPot
-                    className="mr-2 hover:text-customPurple"
+                    className="mr-2 hover:text-emerald-600"
                     size={20}
                   />
                   Recipes
                 </Link>
                 <Link
-                  onClick={() => setActiveTab("tab2")}
                   href="/myRecipes"
-                  className={`h-[52px] px-3  flex items-center leading-6 hover:border-b-2 hover:border-customPurple hover:text-customPurple  ${
-                    activeTab === "tab2"
-                      ? "text-customPurple font-bold  border-b-2 border-customPurple"
+                  className={`h-full px-3  flex items-center leading-6 hover:border-b-2 hover:border-emerald-600 hover:text-emerald-600  ${
+                    pathname === "/myRecipes"
+                      ? "text-emerald-600 font-bold  border-b-2 border-emerald-600"
                       : "font-semibold"
                   } `}
                 >
-                  <ChefHat className="mr-2 hover:text-customPurple" size={20} />
+                  <ChefHat className="mr-2 hover:text-emerald-600" size={20} />
                   My Recipes
                 </Link>
                 <ThemeToggle />
@@ -63,10 +61,9 @@ const NavBar = () => {
               {/* <ProfileClient /> */}
               {/* {user ? (
                 <Link
-                  onClick={() => setActiveTab("tab3")}
                   href="/api/auth/logout"
-                  className={`h-[52px] px-5 flex items-center leading-6 hover:text-customPurple ${
-                    activeTab === "tab3"
+                  className={`h-full px-5 flex items-center leading-6 hover:text-customPurple ${
+                    pathname === "/api/auth/logout"
                       ? "text-customPurple font-semibold border-customPurple"
                       : "font-semibold"
                   }`}
@@ -76,10 +73,9 @@ const NavBar = () => {
                 </Link>
               ) : (
                 <Link
-                  onClick={() => setActiveTab("tab3")}
                   href="/api/auth/login"
-                  className={`h-[52px] px-5 font-semibold flex items-center leading-6 hover:border-b-2 hover:border-customPurple hover:text-customPurple hover:font-bold ${
-                    activeTab === "tab3"
+                  className={`h-full px-5 font-semibold flex items-center leading-6 hover:border-b-2 hover:border-customPurple hover:text-customPurple hover:font-bold ${
+                    pathname === "/api/auth/login"
                       ? "text-customPurple font-bold border-customPurple"
                       : ""
                   } `}
