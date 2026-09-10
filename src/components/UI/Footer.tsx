@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <footer>
       <div className="h-[384px] flex flex-col justify-center text-center ">
-        <h3 className="text-3xl md:text-5xl text-emerald-950 font-lexend font-bold py-5">
+        <h3 className="text-3xl md:text-5xl text-emerald-950 font-lexend font-bold py-5 dark:text-white">
           Your recipes, your way
         </h3>
         <p className="text-lg py-5 mb-5">
@@ -26,12 +26,12 @@ const Footer = () => {
               alt="Logo"
             />
           </Link>
-          <div className="flex justify-center text-gray-600 text-sm">
+          <div className="flex justify-center text-gray-600 text-sm dark:text-white">
             Privacy - Terms - About Us
           </div>
           <div className="flex items-center gap-3">
-            <Instagram className="h-8 w-8 text-gray-600 hover:text-emerald-600 transition-colors" />
-            <Twitter className="h-8 w-8 text-gray-600 hover:text-emerald-600 transition-colors" />
+            <Instagram className="h-8 w-8 text-gray-600 hover:text-emerald-600 transition-colors dark:text-white" />
+            <Twitter className="h-8 w-8 text-gray-600 hover:text-emerald-600 transition-colors dark:text-white" />
           </div>
         </div>
       </div>
