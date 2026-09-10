@@ -31,9 +31,9 @@ export default function ThemeToggle() {
       }
     >
       {toogleTheme ? (
-        <Moon className=" h-7 w-7" color="white" />
+        <Moon className=" h-7 w-7" color="#022C22" />
       ) : (
-        <Sun className=" h-7 w-7" color="gray" />
+        <Sun className=" h-7 w-7" color="white" />
       )}
     </button>
   );
