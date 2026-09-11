@@ -16,6 +16,19 @@ const RecipesPagination = ({ totalPages, handleChange }: PaginationProps) => {
           count={totalPages}
           size="large"
           onChange={(_, value) => handleChange(value)}
+          sx={{
+            "& .MuiPaginationItem-root": {
+              backgroundColor: "#059669", // emerald-600
+              color: "#fff",
+              "&:hover": {
+                backgroundColor: "#047857", // emerald-700
+              },
+              "&.Mui-selected": {
+                backgroundColor: "#047857", // keep selected consistent
+                color: "#fff",
+              },
+            },
+          }}
         />
       </Stack>
     </div>
