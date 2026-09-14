@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import MaxWidthWrapper from "../MaxWidthWrapper";
 import { MobileNav, ThemeToggle, ProfileClient } from "./index";
+import SearchBar from "../SearchBar";
 import { CookingPot, ChefHat, LogIn, LogOut } from "lucide-react";
 
 const NavBar = () => {
@@ -27,6 +28,9 @@ const NavBar = () => {
                   alt="hero"
                 />
               </Link>
+            </div>
+            <div>
+              <SearchBar />
             </div>
             <div className="flex justify-end items-center w-auto h-full">
               <MobileNav isAuth={false} />
