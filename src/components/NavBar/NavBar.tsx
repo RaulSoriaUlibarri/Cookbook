@@ -7,6 +7,7 @@ import MaxWidthWrapper from "../MaxWidthWrapper";
 import { MobileNav, ThemeToggle, ProfileClient } from "./index";
 import SearchBar from "../SearchBar/SearchBar";
 import { CookingPot, ChefHat, LogIn, LogOut } from "lucide-react";
+import NavLink from "./NavLink";
 
 const NavBar = () => {
   // const { user } = useUser();
@@ -34,31 +35,26 @@ const NavBar = () => {
               <SearchBar />
               <MobileNav isAuth={false} />
               <div className="hidden h-full items-center sm:flex text-sm">
-                <Link
-                  href="/directory"
-                  className={`h-full px-3 flex items-center leading-6 hover:border-b-2 hover:border-emerald-600 hover:text-emerald-600 ${
-                    pathname === "/directory"
-                      ? "text-emerald-600 font-bold border-b-2 border-emerald-600"
-                      : "font-semibold"
-                  } `}
-                >
-                  <CookingPot
-                    className="mr-2 hover:text-emerald-600"
-                    size={20}
-                  />
-                  Recipes
-                </Link>
-                <Link
-                  href="/myRecipes"
-                  className={`h-full px-3  flex items-center leading-6 hover:border-b-2 hover:border-emerald-600 hover:text-emerald-600  ${
-                    pathname === "/myRecipes"
-                      ? "text-emerald-600 font-bold  border-b-2 border-emerald-600"
-                      : "font-semibold"
-                  } `}
-                >
-                  <ChefHat className="mr-2 hover:text-emerald-600" size={20} />
-                  My Recipes
-                </Link>
+                <NavLink
+                  label="Recipes"
+                  route="/directory"
+                  icon={
+                    <CookingPot
+                      className="mr-2 hover:text-emerald-600"
+                      size={20}
+                    />
+                  }
+                />
+                <NavLink
+                  label="Favorites"
+                  route="/myRecipes"
+                  icon={
+                    <ChefHat
+                      className="mr-2 hover:text-emerald-600"
+                      size={20}
+                    />
+                  }
+                />
                 <ThemeToggle />
               </div>
               {/* <ProfileClient /> */}
