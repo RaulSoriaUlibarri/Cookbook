@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import MaxWidthWrapper from "../MaxWidthWrapper";
 import { MobileNav, ThemeToggle, ProfileClient } from "./index";
-import SearchBar from "../SearchBar";
+import SearchBar from "../SearchBar/SearchBar";
 import { CookingPot, ChefHat, LogIn, LogOut } from "lucide-react";
 
 const NavBar = () => {
@@ -14,7 +14,7 @@ const NavBar = () => {
 
   return (
     <>
-      <nav className="sticky inset-x-0 top-0 mx-auto flex items-center z-30 w-2/3 h-[80px] bg-transparent backdrop-blur-lg transition-all text-gray-600 text-sm dark:text-white">
+      <nav className="sticky w-2/3 inset-x-0 top-0 mx-auto flex items-center z-30  h-[80px] bg-transparent backdrop-blur-lg transition-all text-gray-600 text-sm dark:text-white">
         <MaxWidthWrapper className="w-full h-full max-w-none md:px-0">
           <div className="flex h-full items-center justify-between md:justify-between px-5 ">
             <div className="flex items-center max-w-[130px]">
@@ -29,10 +29,9 @@ const NavBar = () => {
                 />
               </Link>
             </div>
-            <div>
-              <SearchBar />
-            </div>
+
             <div className="flex justify-end items-center w-auto h-full">
+              <SearchBar />
               <MobileNav isAuth={false} />
               <div className="hidden h-full items-center sm:flex text-sm">
                 <Link
