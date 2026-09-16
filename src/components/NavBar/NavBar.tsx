@@ -31,8 +31,8 @@ const NavBar = () => {
               </Link>
             </div>
 
+            <SearchBar />
             <div className="flex justify-end items-center w-auto h-full">
-              <SearchBar />
               <MobileNav isAuth={false} />
               <div className="hidden h-full items-center sm:flex text-sm">
                 <NavLink
