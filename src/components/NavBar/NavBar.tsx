@@ -1,6 +1,5 @@
 "use client";
 
-import { usePathname } from "next/navigation";
 // import { useUser } from "@auth0/nextjs-auth0/client";
 import Link from "next/link";
 import MaxWidthWrapper from "../MaxWidthWrapper";
@@ -11,7 +10,6 @@ import NavLink from "./NavLink";
 
 const NavBar = () => {
   // const { user } = useUser();
-  const pathname = usePathname();
 
   return (
     <>
