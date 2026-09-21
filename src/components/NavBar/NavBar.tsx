@@ -16,15 +16,15 @@ const NavBar = () => {
       <nav className="sticky w-2/3 inset-x-0 top-0 mx-auto flex items-center z-30  h-[80px] bg-transparent backdrop-blur-lg transition-all text-gray-600 text-sm dark:text-white">
         <MaxWidthWrapper className="w-full h-full max-w-none md:px-0">
           <div className="flex h-full items-center justify-between md:justify-between px-5 ">
-            <div className="flex items-center max-w-[130px]">
+            <div className="flex items-center">
               <Link
                 href="/"
-                className="flex mr-4 z-40 text-xl md:text-3xl font-semibold hover:cursor-pointer"
+                className="mr-4 z-40 shrink-0 hover:cursor-pointer"
               >
                 <img
-                  className=" object-fill"
+                  className="h-20 w-auto md:h-23"
                   src="/images/logo.png"
-                  alt="hero"
+                  alt="Site logo"
                 />
               </Link>
             </div>
