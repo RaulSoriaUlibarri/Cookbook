@@ -1,6 +1,5 @@
 "use client";
 
-import { usePathname } from "next/navigation";
 // import { useUser } from "@auth0/nextjs-auth0/client";
 import Link from "next/link";
 import MaxWidthWrapper from "../MaxWidthWrapper";
@@ -11,7 +10,6 @@ import NavLink from "./NavLink";
 
 const NavBar = () => {
   // const { user } = useUser();
-  const pathname = usePathname();
 
   return (
     <>
@@ -31,8 +29,8 @@ const NavBar = () => {
               </Link>
             </div>
 
+            <SearchBar />
             <div className="flex justify-end items-center w-auto h-full">
-              <SearchBar />
               <MobileNav isAuth={false} />
               <div className="hidden h-full items-center sm:flex text-sm">
                 <NavLink
