@@ -1,10 +1,19 @@
 "use client";
 
-export default function AreaRecipesPage() {
+import { use } from "react";
+import MaxWidthWrapper from "@/components/MaxWidthWrapper";
+
+type PageProps = {
+  params: Promise<{ country: string }>;
+};
+
+export default function AreaRecipesPage({ params }: PageProps) {
+  const { country } = use(params);
+  const decodedCountry = decodeURIComponent(country);
+
   return (
-    <div>
-      bienvenido!
-      <span>invitado</span>
-    </div>
+    <>
+      <MaxWidthWrapper>Hello there {decodedCountry}</MaxWidthWrapper>
+    </>
   );
 }
