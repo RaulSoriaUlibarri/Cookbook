@@ -24,8 +24,7 @@ export async function fetchCountriesList() {
   if (!response.ok)
     throw new Error(`Error fetching categories, info: ${response.statusText}`);
   const data = await response.json();
-  const countries = data.meals;
-  return countries.slice(0, 20);
+  return data.meals;
 }
 
 export async function fetchIngredientsList() {
