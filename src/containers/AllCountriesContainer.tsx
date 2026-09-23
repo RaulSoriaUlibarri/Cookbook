@@ -10,7 +10,7 @@ type Country = {
   strCountry: string;
 };
 
-const CountriesContainer = () => {
+const AllCountriesContainer = () => {
   const { data, error, isLoading } = useQuery<Country[]>({
     queryFn: fetchCountriesList,
     queryKey: ["countriesList"],
@@ -60,4 +60,4 @@ const CountriesContainer = () => {
   );
 };
 
-export default CountriesContainer;
+export default AllCountriesContainer;
