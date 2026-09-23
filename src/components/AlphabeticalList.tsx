@@ -11,10 +11,10 @@ const AlphabeticalList = ({
 }: AlphabeticalListProps) => {
   return (
     <div className="my-5">
-      <p className="w-fit px-2 font-bold text-2xl text-emerald-950 border-2  border-emerald-950 dark:border-white dark:bg-white">
+      <p className="w-fit px-2 font-bold text-2xl text-emerald-950 border-2  border-emerald-950 dark:border-white dark:text-white">
         {letter}
       </p>
-      <ul className="flex flex-wrap">
+      <ul className="flex flex-wrap mt-2 mb-10">
         {countries.map((i) => (
           <li
             key={i}
