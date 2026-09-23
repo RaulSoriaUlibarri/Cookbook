@@ -39,6 +39,7 @@ const CategoryFilter = () => {
 
   return (
     <FilterDropdown
+      href="all-countries"
       label="Categories"
       options={categoriesArray}
       handleChange={dummyFunction}
