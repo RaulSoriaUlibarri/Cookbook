@@ -20,11 +20,6 @@ const AllCountriesContainer = () => {
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
-
-  function searchByCountry(country: string) {
-    console.log(country);
-  }
-
   const grouped: Record<string, string[]> = {};
 
   if (data) {
@@ -52,7 +47,7 @@ const AllCountriesContainer = () => {
             key={letter}
             letter={letter}
             countries={grouped[letter]}
-            onSelect={searchByCountry}
+            route="all-countries"
           />
         ))}
       </MaxWidthWrapper>

@@ -40,10 +40,6 @@ const AllIngredientsContainer = () => {
 
   const alphabet = Object.keys(grouped).sort();
 
-  function searchByIngredient(ingredient: string) {
-    console.log(ingredient);
-  }
-
   return (
     <section className="pt-10">
       <MaxWidthWrapper className="px-10 md:p-none">
@@ -55,7 +51,7 @@ const AllIngredientsContainer = () => {
             key={letter}
             letter={letter}
             countries={grouped[letter]}
-            onSelect={searchByIngredient}
+            route="all-ingredients"
           />
         ))}
       </MaxWidthWrapper>
