@@ -35,6 +35,7 @@ const CountryFilter = () => {
 
   return (
     <FilterDropdown
+      href="all-countries"
       options={countriesArray.slice(0, 20)}
       label="Country"
       handleChange={dummyFunction}
