@@ -1,17 +1,20 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 
 type FilterDropdownProps = {
   label: string;
   options: string[];
   handleChange: (value: string) => void;
+  href: string;
 };
 
 const FilterDropdown = ({
   label,
   options,
   handleChange,
+  href,
 }: FilterDropdownProps) => {
   const [open, setOpen] = useState(false);
 
@@ -21,9 +24,12 @@ const FilterDropdown = ({
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >
-      <span className="cursor-pointer px-3 py-2 rounded font-bold text-md hover:underline">
+      <Link
+        href={href}
+        className="cursor-pointer px-3 py-2 rounded font-bold text-md hover:underline"
+      >
         {label.toUpperCase()}
-      </span>
+      </Link>
       {open && (
         <ul className="absolute left-0 mt-2 w-40 bg-white rounded shadow-sm z-5">
           {options.map((item) => (
