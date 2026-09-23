@@ -5,3 +5,4 @@ export { default as RecipesDisplay } from "./RecipesDisplay";
 export { default as RecipesPagination } from "./RecipesPagination";
 export { default as MealCarousel } from "./MealCarousel";
 export { default as SearchBar } from "./SearchBar/SearchBar";
+export { default as AlphabeticalList } from "./AlphabeticalList";
