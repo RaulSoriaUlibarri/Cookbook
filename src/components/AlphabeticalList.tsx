@@ -1,13 +1,15 @@
+import Link from "next/link";
+
 type AlphabeticalListProps = {
   letter: string;
   countries: string[];
-  onSelect: (country: string) => void;
+  route: string;
 };
 
 const AlphabeticalList = ({
   letter,
   countries,
-  onSelect,
+  route,
 }: AlphabeticalListProps) => {
   return (
     <div className="my-5">
@@ -20,12 +22,12 @@ const AlphabeticalList = ({
             key={i}
             className="text-emerald-800 hover:text-emerald-950 hover:cursor-pointer "
           >
-            <a
+            <Link
               className="block pr-5 py-3 hover:underline dark:text-white"
-              onClick={() => onSelect(i)}
+              href={`/${route}/${encodeURIComponent(i)}`}
             >
               {i}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
