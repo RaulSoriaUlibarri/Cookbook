@@ -20,7 +20,7 @@ const AlphabeticalList = ({
           >
             <a
               className="block pr-5 py-3 hover:underline"
-              onClick={() => onSelect(c)}
+              onClick={() => onSelect(i)}
             >
               {i}
             </a>
