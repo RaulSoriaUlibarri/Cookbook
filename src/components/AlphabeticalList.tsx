@@ -11,7 +11,9 @@ const AlphabeticalList = ({
 }: AlphabeticalListProps) => {
   return (
     <div className="my-5">
-      <p className="font-bold text-2xl">{letter}</p>
+      <p className="w-fit px-2 font-bold text-2xl text-emerald-950 border-2  border-emerald-950 dark:border-white dark:bg-white">
+        {letter}
+      </p>
       <ul className="flex flex-wrap">
         {countries.map((i) => (
           <li
@@ -19,7 +21,7 @@ const AlphabeticalList = ({
             className="text-emerald-800 hover:text-emerald-950 hover:cursor-pointer "
           >
             <a
-              className="block pr-5 py-3 hover:underline"
+              className="block pr-5 py-3 hover:underline dark:text-white"
               onClick={() => onSelect(i)}
             >
               {i}
