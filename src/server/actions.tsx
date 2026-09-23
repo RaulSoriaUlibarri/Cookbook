@@ -34,8 +34,7 @@ export async function fetchIngredientsList() {
   if (!response.ok)
     throw new Error(`Error fetching categories, info: ${response.statusText}`);
   const data = await response.json();
-  const ingredients = data.meals;
-  return ingredients.slice(0, 20);
+  return data.meals;
 }
 
 export async function fetchCategoryMeals(categorySelected: String | null) {
