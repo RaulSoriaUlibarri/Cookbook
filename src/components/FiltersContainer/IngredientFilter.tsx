@@ -35,6 +35,7 @@ const IngredientFilter = () => {
   }
   return (
     <FilterDropdown
+      href="all-countries"
       label="Ingredient"
       handleChange={dummyFunction}
       options={ingredientsArray}
