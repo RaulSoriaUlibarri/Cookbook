@@ -35,10 +35,10 @@ const IngredientFilter = () => {
   }
   return (
     <FilterDropdown
-      href="all-countries"
+      href="all-ingredients"
       label="Ingredient"
       handleChange={dummyFunction}
-      options={ingredientsArray}
+      options={ingredientsArray.slice(0, 20)}
     />
   );
 };
