@@ -4,17 +4,11 @@ import { use } from "react";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { fetchByCountry } from "@/server/actions";
 import { useQuery } from "@tanstack/react-query";
+import { RecipesDisplay } from "@/components";
+import { Meal } from "@/types/meals";
 
 type PageProps = {
   params: Promise<{ country: string }>;
-};
-
-type Meal = {
-  strMeal: string;
-  strMealThumb: string;
-  idMeal: string | null;
-  strArea: string | null;
-  strCountry: string | null;
 };
 
 export default function AreaRecipesPage({ params }: PageProps) {
@@ -30,12 +24,18 @@ export default function AreaRecipesPage({ params }: PageProps) {
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
-
-  console.log(data);
+  if (!data) return null;
 
   return (
     <>
-      <MaxWidthWrapper>Hello there {decodedCountry}</MaxWidthWrapper>
+      <MaxWidthWrapper>
+        <section>
+          <h2 className="font-roboto-slab text-emerald-950 w-fit mx-auto text-3xl font-bold md:text-5xl md:my-10 dark:text-white">
+            {decodedCountry}
+          </h2>
+          <RecipesDisplay meals={data} />
+        </section>
+      </MaxWidthWrapper>
     </>
   );
 }
