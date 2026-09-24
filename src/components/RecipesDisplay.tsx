@@ -5,14 +5,7 @@ import { useState } from "react";
 import MealCard from "./MealCard/MealCard";
 import { RecipesPagination } from "./index";
 import { LayoutList, Grid3X3 } from "lucide-react";
-
-type Meal = {
-  strMeal: string;
-  strMealThumb: string;
-  idMeal: string;
-  strArea: string | null;
-  strCountry: string;
-};
+import { Meal } from "@/types/meals";
 
 interface RecipesDisplayProps {
   meals: Meal[];
@@ -21,10 +14,7 @@ interface RecipesDisplayProps {
 
 const RECIPES_PER_PAGE = 24;
 
-const RecipesDisplay = ({
-  meals,
-  title = "Recipe Collection",
-}: RecipesDisplayProps) => {
+const RecipesDisplay = ({ meals, title }: RecipesDisplayProps) => {
   const [listLayout, setListLayout] = useState<"grid" | "list">("grid");
   const [currentPage, setCurrentPage] = useState<number>(1);
 
@@ -35,9 +25,11 @@ const RecipesDisplay = ({
 
   return (
     <div className="mt-16">
-      <h2 className="w-full font-lexend h-auto p-5 text-4xl text-center font-bold mb-5">
-        {title}
-      </h2>
+      {title && (
+        <h2 className="w-full font-lexend h-auto p-5 text-4xl text-center font-bold mb-5">
+          {title}
+        </h2>
+      )}
       <div className="flex justify-between mb-10 max-w-15 ml-auto">
         <button
           className={
