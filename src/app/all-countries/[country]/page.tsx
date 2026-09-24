@@ -4,7 +4,7 @@ import { use } from "react";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { fetchByCountry } from "@/server/actions";
 import { useQuery } from "@tanstack/react-query";
-import { RecipesDisplay } from "@/components";
+import { Breadcrumb, RecipesDisplay } from "@/components";
 import { Meal } from "@/types/meals";
 
 type PageProps = {
@@ -28,8 +28,14 @@ export default function CountryRecipesPage({ params }: PageProps) {
 
   return (
     <>
-      <MaxWidthWrapper>
+      <MaxWidthWrapper className="px-5 md:p-none">
         <section>
+          <Breadcrumb
+            items={[
+              { label: "All Countries", href: "/all-countries" },
+              { label: decodedCountry },
+            ]}
+          />
           <h2 className="font-roboto-slab text-emerald-950 w-fit mx-auto text-3xl font-bold md:text-5xl md:my-10 dark:text-white">
             {decodedCountry}
           </h2>
