@@ -19,7 +19,7 @@ interface RecipesDisplayProps {
   title?: string;
 }
 
-const RECIPES_PER_PAGE = 18;
+const RECIPES_PER_PAGE = 24;
 
 const RecipesDisplay = ({
   meals,
@@ -55,7 +55,7 @@ const RecipesDisplay = ({
       <ul
         className={
           listLayout === "grid"
-            ? "grid grid-cols-1 gap-8 mb-10 sm:grid-cols-2 md:grid-cols-3 md:gap-4 lg:grid-cols-3 lg:gap-8"
+            ? "grid grid-cols-1 gap-8 mb-10 sm:grid-cols-2 md:grid-cols-4 md:gap-4 lg:grid-cols-4 xl:grid-cols-5 lg:gap-8"
             : "flex flex-col gap-4"
         }
       >
