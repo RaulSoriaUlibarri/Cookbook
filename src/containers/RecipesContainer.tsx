@@ -7,7 +7,7 @@ const RecipesContainer = () => {
       <section>
         <MaxWidthWrapper>
           <FiltersContainer />
-          <RecipesDisplay category="Beef" />
+          {/* <RecipesDisplay  /> */}
         </MaxWidthWrapper>
       </section>
     </>
