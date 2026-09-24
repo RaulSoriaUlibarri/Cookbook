@@ -11,7 +11,7 @@ type PageProps = {
   params: Promise<{ country: string }>;
 };
 
-export default function AreaRecipesPage({ params }: PageProps) {
+export default function CountryRecipesPage({ params }: PageProps) {
   const { country } = use(params);
   const decodedCountry = decodeURIComponent(country);
 
