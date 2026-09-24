@@ -40,16 +40,24 @@ const RecipesDisplay = ({
       </h2>
       <div className="flex justify-between mb-10 max-w-15 ml-auto">
         <button
-          className="cursor-pointer"
-          onClick={() => setListLayout("list")}
-        >
-          <LayoutList />
-        </button>
-        <button
-          className="cursor-pointer"
+          className={
+            listLayout === "grid"
+              ? "cursor-pointer text-emerald-600"
+              : "cursor-pointer hover:text-emerald-800"
+          }
           onClick={() => setListLayout("grid")}
         >
           <Grid3X3 />
+        </button>
+        <button
+          className={
+            listLayout === "list"
+              ? "cursor-pointer text-emerald-600"
+              : "cursor-pointer hover:text-emerald-800"
+          }
+          onClick={() => setListLayout("list")}
+        >
+          <LayoutList />
         </button>
       </div>
       <ul
