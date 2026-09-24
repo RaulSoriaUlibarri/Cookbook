@@ -33,7 +33,6 @@ const RecipesDisplay = ({ category }: RecipesDisplayProps) => {
   const start = (currentPage - 1) * recipesNum;
   const end = currentPage * recipesNum;
   const paginatedData = data.slice(start, end);
-  console.log(paginatedData);
 
   return (
     <div className="mt-16">
@@ -69,11 +68,10 @@ const RecipesDisplay = ({ category }: RecipesDisplayProps) => {
             img={meal.strMealThumb}
             country={meal.strCountry}
             category={category}
-            variant={listLayout} // aquí decides grid o list
+            variant={listLayout}
           />
         ))}
       </ul>
-
       <RecipesPagination
         handleChange={setCurrentPage}
         totalPages={numberOfPages}
