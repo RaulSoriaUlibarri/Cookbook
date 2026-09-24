@@ -6,3 +6,4 @@ export { default as RecipesPagination } from "./RecipesPagination";
 export { default as MealCarousel } from "./MealCarousel";
 export { default as SearchBar } from "./SearchBar/SearchBar";
 export { default as AlphabeticalList } from "./AlphabeticalList";
+export { default as Breadcrumb } from "./UI/BreadCrumb";
