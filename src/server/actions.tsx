@@ -1,3 +1,7 @@
+"use server";
+
+import { IngredientRaw } from "@/types/ingredientRaw";
+
 export async function fetchCategories() {
   const url = "https://www.themealdb.com/api/json/v1/1/categories.php";
   const response = await fetch(url);
@@ -75,4 +79,24 @@ export async function fetchByCountry(mealSelected: String) {
     throw new Error(`Error fetching meal, info: ${response.statusText}`);
   const data = await response.json();
   return data.meals;
+}
+
+export async function fetchIngredientByName(name: string) {
+  const res = await fetch(
+    "https://www.themealdb.com/api/json/v1/1/list.php?i=list",
+  );
+  const data = await res.json();
+  const ingredients: IngredientRaw[] = data.meals;
+
+  const match = ingredients.find(
+    (ing) => ing.strIngredient.toLowerCase() === name.toLowerCase(),
+  );
+
+  if (!match) return null;
+
+  return {
+    name: match.strIngredient,
+    description: match.strDescription,
+    image: match.strThumb,
+  };
 }
