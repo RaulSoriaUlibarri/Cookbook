@@ -4,6 +4,7 @@ import { use } from "react";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { fetchIngredientByName, fetchByIngredients } from "@/server/actions";
 import { useQuery } from "@tanstack/react-query";
+import { Breadcrumb } from "@/components";
 
 type PageProps = {
   params: Promise<{ ingredient: string }>;
@@ -37,6 +38,12 @@ export default function IngredientRecipesPage({ params }: PageProps) {
     <>
       <MaxWidthWrapper className="px-5 md:p-none">
         <section className="w-full">
+          <Breadcrumb
+            items={[
+              { label: "All Ingredients", href: "/all-ingredients" },
+              { label: decodedIngredient },
+            ]}
+          />
           <h1 className="font-roboto-slab text-emerald-950 text-xl md:text-2xl lg:text-4xl my-5 lg:my-10 mx-auto w-fit font-bold dark:text-white text-center">
             {ingredientInfo.name} Recipes
           </h1>
