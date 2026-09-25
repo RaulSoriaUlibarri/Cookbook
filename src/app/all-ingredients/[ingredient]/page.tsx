@@ -36,12 +36,23 @@ export default function IngredientRecipesPage({ params }: PageProps) {
   return (
     <>
       <MaxWidthWrapper className="px-5 md:p-none">
-        Welcome to the page of {decodedIngredient}
-        <h1>{ingredientInfo.name}</h1>
-        {ingredientInfo.image && (
-          <img src={ingredientInfo.image} alt={ingredientInfo.name} />
-        )}
-        {ingredientInfo.description && <p>{ingredientInfo.description}</p>}
+        <section className="w-full">
+          <h1 className="font-roboto-slab text-emerald-950 text-xl md:text-2xl lg:text-4xl my-5 lg:my-10 mx-auto w-fit font-bold dark:text-white text-center">
+            {ingredientInfo.name} Recipes
+          </h1>
+          {ingredientInfo.image && (
+            <img
+              src={ingredientInfo.image}
+              alt={ingredientInfo.name}
+              className="max-w-[250px] rounded-lg mx-auto lg:max-w-[450px] dark:bg-gray-100 "
+            />
+          )}
+          {ingredientInfo.description && (
+            <p className="text-justify mt-10 dark:text-white max-w-[550px] md:max-w-3/4 mx-auto lg:text-lg">
+              {ingredientInfo.description}
+            </p>
+          )}
+        </section>
       </MaxWidthWrapper>
     </>
   );
