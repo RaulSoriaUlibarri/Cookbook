@@ -9,7 +9,7 @@ type ToastProps = {
   duration?: number;
 };
 
-const Toast = ({ message, show, onClose, duration = 2000 }: ToastProps) => {
+const Toast = ({ message, show, onClose, duration = 3000 }: ToastProps) => {
   useEffect(() => {
     if (!show) return;
 
@@ -24,7 +24,7 @@ const Toast = ({ message, show, onClose, duration = 2000 }: ToastProps) => {
 
   return (
     <div
-      className="fixed top-5 right-5 z-50 rounded-lg border border-gray-200 bg-white px-4 py-3 shadow-lg
+      className="fixed bottom-20 right-5 z-50 rounded-lg border border-gray-200 bg-white px-4 py-3 shadow-lg
         dark:border-slate-700 dark:bg-slate-800
         animate-in fade-in slide-in-from-top-2 duration-300"
     >
