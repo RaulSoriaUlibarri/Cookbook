@@ -61,6 +61,10 @@ export default function MyRecipesPage() {
             You haven't saved any recipes yet.
           </p>
         )}
+
+        {!isLoading && !error && meals.length > 0 && (
+          <RecipesDisplay meals={meals} />
+        )}
       </MaxWidthWrapper>
     </>
   );
