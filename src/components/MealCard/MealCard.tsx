@@ -1,7 +1,7 @@
 "use client";
 
 import { Bookmark, BookmarkPlus } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
 type MealCardProps = {
@@ -23,11 +23,33 @@ const MealCard = ({
   variant = "grid",
   className = "",
 }: MealCardProps) => {
-  const [open, setOpen] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
   const [expanded, setExpanded] = useState(false);
 
-  function saveRecipe() {
-    //In progress
+  // Al montar, revisa si esta receta ya estaba guardada
+  useEffect(() => {
+    const saved = JSON.parse(localStorage.getItem("savedRecipes") || "[]");
+    setIsSaved(saved.includes(name));
+  }, [name]);
+
+  function saveRecipe(e: React.MouseEvent) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const saved: string[] = JSON.parse(
+      localStorage.getItem("savedRecipes") || "[]",
+    );
+
+    let updated: string[];
+
+    if (saved.includes(name)) {
+      updated = saved.filter((recipeName) => recipeName !== name);
+    } else {
+      updated = [...saved, name];
+    }
+
+    localStorage.setItem("savedRecipes", JSON.stringify(updated));
+    setIsSaved(!isSaved);
   }
 
   function toggleExpanded(e: React.MouseEvent) {
@@ -39,7 +61,7 @@ const MealCard = ({
   return (
     <li
       id={id}
-      className={`relative rounded-lg shadow-md dark:shadow-slate-900/40 border border-gray-200 dark:border-none cursor-pointer 
+      className={`relative rounded-lg shadow-md dark:shadow-slate-900/40 border border-gray-200 dark:border-none cursor-pointer dark:bg-emerald-900
           ${variant === "grid" ? "flex flex-col" : "flex flex-row items-center p-2 gap-4"} ${className}`}
     >
       <Link href={`/recipe/${id}`} className="absolute inset-0 z-10"></Link>
@@ -82,30 +104,24 @@ const MealCard = ({
         </p>
       </div>
       <button
-        className={`absolute ${variant === "grid" ? "top-3 right-3" : "top-2 right-2"} flex h-10 cursor-pointer`}
+        onClick={saveRecipe}
+        className="absolute z-20 top-2 right-2 flex h-10 cursor-pointer"
       >
-        <div
-          onMouseEnter={() => setOpen(true)}
-          onMouseLeave={() => setOpen(false)}
-        >
-          {!open ? (
-            <Bookmark
-              fill="white"
-              strokeWidth={0.2}
-              color="black"
-              onClick={() => saveRecipe()}
-              className="w-8 h-8 dark:drop-shadow-md"
-            />
-          ) : (
-            <BookmarkPlus
-              strokeWidth={0.8}
-              color={"#6D31EDFF"}
-              onClick={() => saveRecipe()}
-              className="w-8 h-8 dark:drop-shadow-md"
-              fill="white"
-            />
-          )}
-        </div>
+        {isSaved ? (
+          <BookmarkPlus
+            strokeWidth={1}
+            color="#065F46" // emerald-800
+            fill="#D1FAE5" // emerald-100
+            className="w-8 h-8 dark:drop-shadow-md"
+          />
+        ) : (
+          <Bookmark
+            strokeWidth={1}
+            color="#374151" // gray-700
+            fill="white"
+            className="w-8 h-8 dark:drop-shadow-md"
+          />
+        )}
       </button>
     </li>
   );
