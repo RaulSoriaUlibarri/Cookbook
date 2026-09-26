@@ -7,3 +7,4 @@ export { default as MealCarousel } from "./MealCarousel";
 export { default as SearchBar } from "./SearchBar/SearchBar";
 export { default as AlphabeticalList } from "./AlphabeticalList";
 export { default as Breadcrumb } from "./UI/BreadCrumb";
+export { default as Toast } from "./UI/Toast";
