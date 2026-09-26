@@ -30,8 +30,8 @@ const MealCard = ({
 
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem("savedRecipes") || "[]");
-    setIsSaved(saved.includes(name));
-  }, [name]);
+    setIsSaved(saved.includes(id));
+  }, [id]);
 
   function saveRecipe(e: React.MouseEvent) {
     e.preventDefault();
@@ -42,12 +42,12 @@ const MealCard = ({
     );
 
     let updated: string[];
-    const wasAlreadySaved = saved.includes(name);
+    const wasAlreadySaved = saved.includes(id);
 
     if (wasAlreadySaved) {
-      updated = saved.filter((recipeName) => recipeName !== name);
+      updated = saved.filter((recipeId) => recipeId !== id);
     } else {
-      updated = [...saved, name];
+      updated = [...saved, id];
     }
 
     localStorage.setItem("savedRecipes", JSON.stringify(updated));
