@@ -40,7 +40,7 @@ const RecipeContainer = ({ id }: RecipeContainerProps) => {
     : null;
 
   return (
-    <section className="bg-green-50 pb-10 pt-20">
+    <section className="bg-green-50 pb-10 pt-20 dark:bg-emerald-950">
       <MaxWidthWrapper>
         <div className="mt-4">
           <Link
@@ -51,19 +51,19 @@ const RecipeContainer = ({ id }: RecipeContainerProps) => {
           </Link>
         </div>
         <div className="text-center mb-10">
-          <h2 className="quintessential text-5xl font-bold text-orange-700 mb-2">
+          <h2 className="quintessential text-5xl font-bold text-orange-600 dark:text-orange-500 mb-2">
             {meal.strMeal}
           </h2>
           <div className="flex items-center my-6">
             <div className="flex-grow border-t border-gray-300"></div>
-            <span className="mx-4 text-lg font-semibold text-gray-700">
+            <span className="mx-4 text-lg font-semibold text-gray-700 dark:text-white">
               {meal.strArea} {meal.strArea && meal.strCountry ? "-" : null}
               {meal.strCountry}
             </span>
             <div className="flex-grow border-t border-gray-300"></div>
           </div>
           <div className="flex justify-center flex-wrap gap-3 mt-4">
-            {tags.map((tag) => (
+            {tags.map((tag: string) => (
               <span
                 key={tag}
                 className="px-4 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium shadow-sm"
@@ -73,8 +73,6 @@ const RecipeContainer = ({ id }: RecipeContainerProps) => {
             ))}
           </div>
         </div>
-
-        {/* Imagen principal */}
         <div className="max-w-[600px] mx-auto my-10 space-y-6">
           <div>
             <img
@@ -83,14 +81,12 @@ const RecipeContainer = ({ id }: RecipeContainerProps) => {
               className="rounded-xl shadow-lg w-full h-auto"
             />
           </div>
-
-          {/* Sección de video */}
           {meal.strYoutube && (
             <div className="space-y-4">
-              <h3 className="text-2xl font-bold text-gray-800">
+              <h3 className="text-2xl font-bold text-gray-800 dark:text-white">
                 ¿Prefieres cocinar con un video?
               </h3>
-              <p className="text-gray-600">
+              <p className="text-gray-600 dark:text-white">
                 ¡Mira el video paso a paso y sigue la receta fácilmente!
               </p>
               <div className="aspect-video rounded-lg overflow-hidden shadow-md">
@@ -104,10 +100,8 @@ const RecipeContainer = ({ id }: RecipeContainerProps) => {
             </div>
           )}
         </div>
-
-        {/* Ingredientes */}
         <div className="p-6  mx-auto max-w-2/3 ">
-          <h3 className="text-2xl font-bold text-yellow-800 mb-4 border-b pb-5 mb-10">
+          <h3 className="text-2xl font-bold text-yellow-800 mb-4 border-b pb-5 mb-10  dark:text-orange-500">
             Ingredients
           </h3>
           <ul className="space-y-3">
@@ -118,18 +112,18 @@ const RecipeContainer = ({ id }: RecipeContainerProps) => {
                   alt={ing}
                   className="w-10 h-10 object-contain"
                 />
-                <span className="font-medium text-gray-800">{ing}</span>
-                <span className="text-gray-600">{measure}</span>
+                <span className="font-medium text-gray-800  dark:text-white">
+                  {ing}
+                </span>
+                <span className="text-gray-600 dark:text-white">{measure}</span>
               </li>
             ))}
           </ul>
-
-          {/* Instrucciones */}
           <div className="text-yellow-800 p-2 mt-10 ">
-            <h3 className="text-2xl font-bold border-b pb-5 mb-4">
+            <h3 className="text-2xl font-bold border-b pb-5 mb-4 dark:text-orange-500">
               Instructions
             </h3>
-            <p className="whitespace-pre-line leading-relaxed text-gray-800 text-lg">
+            <p className="whitespace-pre-line leading-relaxed text-gray-800 text-lg  dark:text-white">
               {meal.strInstructions}
             </p>
           </div>
