@@ -35,7 +35,7 @@ const FilterDropdown = ({
           {options.map((item) => (
             <li
               key={item}
-              className="px-3 py-2 hover:bg-blue-100 cursor-pointer dark:text-white"
+              className="px-3 py-2 hover:bg-blue-100 dark:hover:bg-gray-500 cursor-pointer dark:text-white"
               onClick={() => handleChange(item)}
             >
               {item}
