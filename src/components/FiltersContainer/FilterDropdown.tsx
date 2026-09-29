@@ -31,11 +31,11 @@ const FilterDropdown = ({
         {label.toUpperCase()}
       </Link>
       {open && (
-        <ul className="absolute left-0 mt-2 w-40 bg-white rounded shadow-sm z-5">
+        <ul className="absolute left-0 mt-2 w-40 bg-white rounded shadow-sm z-5 dark:bg-black">
           {options.map((item) => (
             <li
               key={item}
-              className="px-3 py-2 hover:bg-blue-100 cursor-pointer "
+              className="px-3 py-2 hover:bg-blue-100 cursor-pointer dark:text-white"
               onClick={() => handleChange(item)}
             >
               {item}
