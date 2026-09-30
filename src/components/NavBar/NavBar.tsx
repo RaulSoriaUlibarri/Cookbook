@@ -31,7 +31,6 @@ const NavBar = () => {
 
             <SearchBar />
             <div className="flex justify-end items-center w-auto h-full">
-              <MobileNav isAuth={false} />
               <div className="hidden h-full items-center sm:flex text-sm">
                 <NavLink
                   label="Recipes"
@@ -54,9 +53,9 @@ const NavBar = () => {
                   }
                 />
                 <ThemeToggle />
+                <ProfileClient />
+                <MobileNav isAuth={false} />
               </div>
-              {/* <ProfileClient /> */}
-              {/* ...auth block unchanged... */}
             </div>
           </div>
         </MaxWidthWrapper>
