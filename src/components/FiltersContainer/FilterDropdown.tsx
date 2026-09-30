@@ -20,7 +20,7 @@ const FilterDropdown = ({
 
   return (
     <div
-      className="relative inline-block px-5"
+      className="relative inline-block px-5 z-50"
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >
@@ -31,7 +31,7 @@ const FilterDropdown = ({
         {label.toUpperCase()}
       </Link>
       {open && (
-        <ul className="absolute left-0 mt-2 w-40 bg-white rounded shadow-sm z-5 dark:bg-black">
+        <ul className="absolute left-0 w-40 bg-white rounded shadow-sm z-50 dark:bg-black">
           {options.map((item) => (
             <li
               key={item}
