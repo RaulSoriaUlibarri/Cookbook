@@ -20,7 +20,7 @@ export default async function Home() {
           </div>
         </div>
         <div className="py-5 flex justify-center bg-green-700 text-xl text-white ">
-          <strong className="text-gray-700 dark:text-gray-200">
+          <strong className="text-gray-200 ">
             Explore thousands of international recipes — thanks to TheMealDB
             API.
           </strong>
