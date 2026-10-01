@@ -98,8 +98,14 @@ const MealCarousel = ({
           )}
         </div>
         <Link
-          href=""
-          className="group inline-flex flex-shrink-0 items-center gap-1 whitespace-nowrap rounded-full bg-emerald-600 px-4 py-2 text-sm font-bold text-white transition-colors hover:bg-emerald-700 dark:bg-orange-600 dark:hover:bg-orange-500"
+          href={
+            filterType === "ingredient"
+              ? `/all-ingredients/${encodeURIComponent(ingredient!)}`
+              : "/"
+          }
+          title={`See all ${filterValue} meals`}
+          aria-label={`See all ${filterValue} meals`}
+          className="group inline-flex flex-shrink-0 items-center gap-1 whitespace-nowrap rounded-full bg-emerald-600 px-4 py-2 text-sm font-bold text-white transition-colors hover:bg-emerald-700 "
         >
           See all
           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
