@@ -11,16 +11,16 @@ export default async function Home() {
         {" "}
         <div className="flex w-full items-center justify-end h-[400px] bg-[url(/images/landing_page_hero1.png)] bg-cover bg-center bg-no-repeat">
           <div className="w-1/2 text-center text-black ">
-            <h2 className="font-roboto-slab text-4xl md:text-6xl font-bold p-2 my-5 dark:text-white">
+            <h2 className="font-roboto-slab text-4xl text-gray-900 md:text-6xl font-bold p-2 my-5 dark:text-gray-100">
               Find Your Favorite Recipes
             </h2>
-            <p className="text-x md:text-2xl dark:text-white">
+            <p className="text-x text-gray-800 md:text-2xl dark:text-gray-200">
               Discover, save, and share delicious recipes from around the world.
             </p>
           </div>
         </div>
         <div className="py-5 flex justify-center bg-green-700 text-xl text-white ">
-          <strong>
+          <strong className="text-gray-200 ">
             Explore thousands of international recipes — thanks to TheMealDB
             API.
           </strong>
