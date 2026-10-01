@@ -44,7 +44,6 @@ const MealCarousel = ({
       const result = category
         ? await fetchCategoryMeals(category)
         : await fetchByIngredients(ingredient!);
-      // TheMealDB returns null (not []) when an ingredient/category has no matches
       return result ?? [];
     },
     queryKey: ["meals", filterType, filterValue],
@@ -99,7 +98,11 @@ const MealCarousel = ({
           )}
         </div>
         <Link
-          href=""
+          href={
+            filterType === "ingredient"
+              ? `/all-ingredients/${encodeURIComponent(ingredient!)}`
+              : "/"
+          }
           className="group inline-flex flex-shrink-0 items-center gap-1 whitespace-nowrap rounded-full bg-emerald-600 px-4 py-2 text-sm font-bold text-white transition-colors hover:bg-emerald-700 "
         >
           See all
