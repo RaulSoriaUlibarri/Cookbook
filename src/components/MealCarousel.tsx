@@ -74,7 +74,7 @@ const MealCarousel = ({
 
   return (
     <div
-      className={`my-6 ${
+      className={`mt-15 ${
         featured
           ? "bg-emerald-50 dark:bg-emerald-950 rounded-2xl px-4 py-10 md:p-6"
           : ""
@@ -83,7 +83,7 @@ const MealCarousel = ({
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-3">
           <h2
-            className={`text-left font-bold text-emerald-900 dark:text-white ${
+            className={`text-left font-bold text-gray-900 dark:text-gray-100 ${
               featured
                 ? "text-3xl md:text-4xl text-emerald-700 dark:text-emerald-400"
                 : "text-2xl"
@@ -135,7 +135,6 @@ const MealCarousel = ({
                 />
               ))}
         </ul>
-
         <button
           type="button"
           aria-label="Next meals"
