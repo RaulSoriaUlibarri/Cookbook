@@ -44,7 +44,6 @@ const MealCarousel = ({
       const result = category
         ? await fetchCategoryMeals(category)
         : await fetchByIngredients(ingredient!);
-      // TheMealDB returns null (not []) when an ingredient/category has no matches
       return result ?? [];
     },
     queryKey: ["meals", filterType, filterValue],
@@ -100,7 +99,7 @@ const MealCarousel = ({
         </div>
         <Link
           href=""
-          className="group inline-flex flex-shrink-0 items-center gap-1 whitespace-nowrap rounded-full bg-emerald-600 px-4 py-2 text-sm font-bold text-white transition-colors hover:bg-emerald-700 "
+          className="group inline-flex flex-shrink-0 items-center gap-1 whitespace-nowrap rounded-full bg-emerald-600 px-4 py-2 text-sm font-bold text-white transition-colors hover:bg-emerald-700 dark:bg-orange-600 dark:hover:bg-orange-500"
         >
           See all
           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
@@ -112,7 +111,7 @@ const MealCarousel = ({
           aria-label="Previous meals"
           onClick={() => scrollByPage("prev")}
           disabled={isLoading}
-          className="absolute left-0 top-1/2 z-20 -translate-y-1/2 -translate-x-1/2 rounded-full bg-emerald-600 text-white p-2 shadow-md hover:bg-emerald-700 hover:cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
+          className="absolute left-0 top-1/2 z-20 -translate-y-1/2 -translate-x-1/2 rounded-full bg-emerald-600 text-white p-2 shadow-md hover:bg-emerald-700 hover:cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed dark:bg-orange-600 dark:hover:bg-orange-500"
         >
           <ChevronLeft className="h-6 w-6" />
         </button>
@@ -142,7 +141,7 @@ const MealCarousel = ({
           aria-label="Next meals"
           onClick={() => scrollByPage("next")}
           disabled={isLoading}
-          className="absolute right-0 top-1/2 z-20 -translate-y-1/2 translate-x-1/2 rounded-full bg-emerald-600 text-white p-2 shadow-md hover:bg-emerald-700 hover:cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
+          className="absolute right-0 top-1/2 z-20 -translate-y-1/2 translate-x-1/2 rounded-full bg-emerald-600 text-white p-2 shadow-md hover:bg-emerald-700 hover:cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed dark:bg-orange-600 dark:hover:bg-orange-500"
         >
           <ChevronRight className="h-6 w-6" />
         </button>
