@@ -45,7 +45,7 @@ const SearchBar = ({
         <button
           type="submit"
           aria-label="Search"
-          className="rounded-r-full pl-2 pr-3 py-1 bg-emerald-600 hover:bg-emerald-700 hover:cursor-pointer"
+          className="rounded-r-full pl-2 pr-3 py-1 bg-emerald-600 hover:bg-emerald-700 hover:cursor-pointer dark:bg-orange-600 dark:hover:bg-orange-700"
         >
           <Search className="text-white" />
         </button>
