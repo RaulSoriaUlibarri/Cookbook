@@ -26,14 +26,14 @@ export default function ThemeToggle() {
       onClick={() => changeTheme()}
       className={
         toogleTheme
-          ? "mx-3 hover:bg-gray-600 p-2 rounded-full hover:cursor-pointer"
-          : "mx-3 hover:bg-gray-300 p-2 rounded-full hover:cursor-pointer"
+          ? "mx-3 p-2 rounded-full hover:cursor-pointer"
+          : "mx-3 p-2 rounded-full hover:cursor-pointer"
       }
     >
       {toogleTheme ? (
-        <Sun className=" h-7 w-7" color="white" />
+        <Sun className="h-7 w-7 text-orange-500 hover:text-orange-700" />
       ) : (
-        <Moon className=" h-7 w-7" color="#022C22" />
+        <Moon className="h-7 w-7 text-emerald-700 hover:text-emerald-950" />
       )}
     </button>
   );
