@@ -1,8 +1,11 @@
 import FilterDropdown from "./FilterDropdown";
 import { fetchIngredientsList } from "@/server/actions";
 import { useQuery } from "@tanstack/react-query";
+import { useRecipeFilterStore } from "@/stores/index";
 
 const IngredientFilter = () => {
+  const setFilter = useRecipeFilterStore((state) => state.setFilter);
+
   type Ingredient = {
     idIngredient: string;
     strIngredient: string;
@@ -30,14 +33,15 @@ const IngredientFilter = () => {
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
-  function dummyFunction(Country: string) {
-    console.log(Country, "This is your Country selected");
+  function handleIngredientChange(categorieSelected: string) {
+    setFilter("ingredient", categorieSelected.toLowerCase());
   }
+
   return (
     <FilterDropdown
       href="all-ingredients"
       label="Ingredient"
-      handleChange={dummyFunction}
+      handleChange={handleIngredientChange}
       options={ingredientsArray.slice(0, 20)}
     />
   );
