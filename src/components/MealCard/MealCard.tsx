@@ -9,7 +9,7 @@ type MealCardProps = {
   id: string;
   img: string;
   name: string;
-  country: string;
+  country?: string | null;
   category?: string | null;
   variant?: string;
   className?: string;
