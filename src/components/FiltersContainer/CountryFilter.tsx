@@ -1,10 +1,11 @@
-"use client";
-
 import FilterDropdown from "./FilterDropdown";
 import { fetchCountriesList } from "@/server/actions";
 import { useQuery } from "@tanstack/react-query";
+import { useRecipeFilterStore } from "@/stores/index";
 
 const CountryFilter = () => {
+  const setFilter = useRecipeFilterStore((state) => state.setFilter);
+
   type Country = {
     strArea: string;
     strCountry: string;
@@ -29,8 +30,8 @@ const CountryFilter = () => {
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
-  function dummyFunction(Country: string) {
-    console.log(Country, "This is your Country selected");
+  function handleCountryChange(categorieSelected: string) {
+    setFilter("country", categorieSelected.toLowerCase());
   }
 
   return (
@@ -38,7 +39,7 @@ const CountryFilter = () => {
       href="all-countries"
       options={countriesArray.slice(0, 20)}
       label="Country"
-      handleChange={dummyFunction}
+      handleChange={handleCountryChange}
     />
   );
 };

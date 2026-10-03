@@ -1,9 +1,11 @@
 import FilterDropdown from "./FilterDropdown";
 import { fetchCategoriesList } from "@/server/actions";
 import { useQuery } from "@tanstack/react-query";
-import { useState, useEffect } from "react";
+import { useRecipeFilterStore } from "@/stores/index";
 
 const CategoryFilter = () => {
+  const setFilter = useRecipeFilterStore((state) => state.setFilter);
+
   type Categoria = {
     strCategory: string;
   };
@@ -24,17 +26,11 @@ const CategoryFilter = () => {
     }
   }
 
-  //   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
-  //   function handleCategoryClick(category: string) {
-  //     setSelectedCategory(category);
-  //   }
-
-  function dummyFunction(categorieSelected: string) {
-    console.log(categorieSelected, "This is your categorie selected");
+  function handleCategoryChange(categorieSelected: string) {
+    setFilter("category", categorieSelected.toLocaleLowerCase());
   }
 
   return (
@@ -42,7 +38,7 @@ const CategoryFilter = () => {
       href="all-countries"
       label="Categories"
       options={categoriesArray}
-      handleChange={dummyFunction}
+      handleChange={handleCategoryChange}
     />
   );
 };
