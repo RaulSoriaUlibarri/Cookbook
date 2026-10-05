@@ -1,6 +1,6 @@
 "use client";
 
-import { fetchMeal } from "@/server/actions";
+import { fetchMealById } from "@/server/actions";
 import { useQuery } from "@tanstack/react-query";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import Link from "next/link";
@@ -11,7 +11,7 @@ type RecipeContainerProps = {
 
 const RecipeContainer = ({ id }: RecipeContainerProps) => {
   const { data, error, isLoading } = useQuery({
-    queryFn: () => fetchMeal(id),
+    queryFn: () => fetchMealById(id),
     queryKey: ["meal", id],
     enabled: !!id,
     staleTime: 1000 * 60 * 30,
@@ -21,7 +21,7 @@ const RecipeContainer = ({ id }: RecipeContainerProps) => {
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
-  const meal = data && data[0];
+  const meal = data;
   if (!meal) return <p>No meal data available</p>;
 
   const tags = meal.strTags ? meal.strTags.split(",") : [];
@@ -29,11 +29,13 @@ const RecipeContainer = ({ id }: RecipeContainerProps) => {
   const ingredients = Array.from({ length: 20 }, (_, i) => {
     const ing = meal[`strIngredient${i + 1}`];
     const measure = meal[`strMeasure${i + 1}`];
+
     if (ing && ing.trim() !== "") {
       return { ing, measure };
     }
+
     return null;
-  }).filter(Boolean);
+  }).filter((item): item is { ing: string; measure: string } => item !== null);
 
   const videoId = meal.strYoutube
     ? new URL(meal.strYoutube).searchParams.get("v")
