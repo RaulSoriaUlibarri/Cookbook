@@ -1,27 +1,19 @@
-// RecipesDisplay.tsx
 "use client";
 
 import { useState } from "react";
-import MealCard from "./MealCard/MealCard";
-import { RecipesPagination } from "./index";
+import SkeletonCard from "../MealCard/SkeletonCard";
 import { LayoutList, Grid3X3 } from "lucide-react";
-import { Meal } from "@/types/meals";
 
-interface RecipesDisplayProps {
-  meals: Meal[];
+interface RecipesDisplaySkeletonProps {
   title?: string;
+  skeletonCards?: number;
 }
 
-const RECIPES_PER_PAGE = 24;
-
-const RecipesDisplay = ({ meals, title }: RecipesDisplayProps) => {
+const RecipesDisplaySkeleton = ({
+  title,
+  skeletonCards = 24,
+}: RecipesDisplaySkeletonProps) => {
   const [listLayout, setListLayout] = useState<"grid" | "list">("grid");
-  const [currentPage, setCurrentPage] = useState<number>(1);
-
-  const numberOfPages = Math.ceil(meals.length / RECIPES_PER_PAGE);
-  const start = (currentPage - 1) * RECIPES_PER_PAGE;
-  const end = currentPage * RECIPES_PER_PAGE;
-  const paginatedData = meals.slice(start, end);
 
   return (
     <div className="mt-16">
@@ -59,23 +51,12 @@ const RecipesDisplay = ({ meals, title }: RecipesDisplayProps) => {
             : "flex flex-col gap-4"
         }
       >
-        {paginatedData.map((meal) => (
-          <MealCard
-            key={meal.idMeal}
-            id={meal.idMeal}
-            name={meal.strMeal}
-            img={meal.strMealThumb}
-            country={meal.strCountry}
-            variant={listLayout}
-          />
+        {Array.from({ length: skeletonCards }).map((_, i) => (
+          <SkeletonCard key={i} />
         ))}
       </ul>
-      <RecipesPagination
-        handleChange={setCurrentPage}
-        totalPages={numberOfPages}
-      />
     </div>
   );
 };
 
-export default RecipesDisplay;
+export default RecipesDisplaySkeleton;
