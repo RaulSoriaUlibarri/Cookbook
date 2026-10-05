@@ -4,7 +4,11 @@ import { use } from "react";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { fetchIngredientByName, fetchByIngredients } from "@/server/actions";
 import { useQuery } from "@tanstack/react-query";
-import { Breadcrumb, RecipesDisplay } from "@/components";
+import {
+  Breadcrumb,
+  RecipesDisplay,
+  RecipesDisplaySkeleton,
+} from "@/components";
 
 type PageProps = {
   params: Promise<{ ingredient: string }>;
@@ -30,7 +34,12 @@ export default function IngredientRecipesPage({ params }: PageProps) {
     staleTime: 1000 * 60 * 30,
   });
 
-  if (loadingInfo || loadingMeals) return <p>loading...</p>;
+  if (loadingInfo || loadingMeals)
+    return (
+      <MaxWidthWrapper>
+        <RecipesDisplaySkeleton title="Loading Recipes..." />
+      </MaxWidthWrapper>
+    );
   if (errorInfo) return <p>Error {errorInfo.message}</p>;
   if (!ingredientInfo) return <p>Ingrediente no encontrado</p>;
 
