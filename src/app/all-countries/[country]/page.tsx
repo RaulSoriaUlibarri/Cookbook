@@ -4,7 +4,11 @@ import { use } from "react";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { fetchByCountry } from "@/server/actions";
 import { useQuery } from "@tanstack/react-query";
-import { Breadcrumb, RecipesDisplay } from "@/components";
+import {
+  Breadcrumb,
+  RecipesDisplay,
+  RecipesDisplaySkeleton,
+} from "@/components";
 import { Meal } from "@/types/meals";
 
 type PageProps = {
@@ -22,7 +26,12 @@ export default function CountryRecipesPage({ params }: PageProps) {
     gcTime: 1000 * 60 * 15,
   });
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading)
+    return (
+      <MaxWidthWrapper>
+        <RecipesDisplaySkeleton title="Loading Recipes..." />
+      </MaxWidthWrapper>
+    );
   if (error) return <p>Error: {error.message}</p>;
   if (!data) return null;
 
