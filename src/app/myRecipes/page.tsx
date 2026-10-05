@@ -1,71 +1,55 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { fetchMeal } from "@/server/actions";
+import { fetchMealById } from "@/server/actions";
 import { RecipesDisplay } from "@/components";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
-
-type Meal = {
-  strMeal: string;
-  strMealThumb: string;
-  idMeal: string;
-  strArea: string | null;
-  strCountry: string;
-};
+import { useFavoritesStore } from "@/stores";
+import { useQueries } from "@tanstack/react-query";
+import { Meal } from "@/types/meals";
 
 export default function MyRecipesPage() {
-  const [meals, setMeals] = useState<Meal[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const favoriteIds = useFavoritesStore((state) => state.favoriteIds);
+  console.log(favoriteIds, "favorites");
 
-  useEffect(() => {
-    async function loadSavedMeals() {
-      try {
-        const savedNames: string[] = JSON.parse(
-          localStorage.getItem("savedRecipes") || "[]",
-        );
+  const results = useQueries({
+    queries: favoriteIds.map((id) => ({
+      queryKey: ["meal", id],
+      queryFn: () => fetchMealById(id),
+    })),
+  });
 
-        const savedIds: string[] = JSON.parse(
-          localStorage.getItem("savedRecipes") || "[]",
-        );
+  const isLoading = results.some((result) => result.isLoading);
+  const hasError = results.some((result) => result.error);
 
-        const results = await Promise.all(savedIds.map((id) => fetchMeal(id)));
+  const meals: Meal[] = results
+    .filter((result) => result.data)
+    .map((result) => result.data as Meal);
 
-        const flattened = results
-          .flat()
-          .filter((meal): meal is Meal => meal !== null && meal !== undefined);
-
-        setMeals(flattened);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : "Something went wrong");
-      } finally {
-        setIsLoading(false);
-      }
-    }
-
-    loadSavedMeals();
-  }, []);
+  console.log(meals, "meals");
 
   return (
-    <>
-      <MaxWidthWrapper className="px-5 md:p-none">
-        <h1 className="font-roboto-slab text-emerald-950 text-xl md:text-2xl lg:text-4xl my-5 lg:my-10 mx-auto w-fit font-bold dark:text-white text-center">
-          Enjoy your favorite meals!
-        </h1>
+    <MaxWidthWrapper className="px-5 md:p-0">
+      <h1 className="font-roboto-slab text-emerald-950 text-xl md:text-2xl lg:text-4xl my-5 lg:my-10 mx-auto w-fit font-bold dark:text-white text-center">
+        Enjoy your favorite meals!
+      </h1>
 
-        {isLoading && <p className="text-center">Loading...</p>}
-        {error && <p className="text-center text-red-600">Error: {error}</p>}
+      {favoriteIds.length === 0 && (
+        <p className="text-center text-gray-500 dark:text-gray-400">
+          You haven&apos;t saved any favorite recipes yet.
+        </p>
+      )}
 
-        {!isLoading && !error && meals.length === 0 && (
-          <p className="text-center text-gray-600 dark:text-slate-300">
-            You haven't saved any recipes yet.
-          </p>
-        )}
+      {hasError && (
+        <p className="text-center text-red-500 dark:text-red-400 mb-4">
+          Some recipes couldn&apos;t be loaded.
+        </p>
+      )}
 
-        {!isLoading && !error && meals.length > 0 && (
-          <RecipesDisplay meals={meals} />
-        )}
-      </MaxWidthWrapper>
-    </>
+      {isLoading && meals.length === 0 ? (
+        <p className="text-center">Loading...</p>
+      ) : (
+        <RecipesDisplay meals={meals} />
+      )}
+    </MaxWidthWrapper>
   );
 }
