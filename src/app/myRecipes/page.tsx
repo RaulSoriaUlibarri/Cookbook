@@ -1,7 +1,7 @@
 "use client";
 
 import { fetchMealById } from "@/server/actions";
-import { RecipesDisplay } from "@/components";
+import { RecipesDisplay, RecipesDisplaySkeleton } from "@/components";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { useFavoritesStore } from "@/stores";
 import { useQueries } from "@tanstack/react-query";
@@ -9,23 +9,33 @@ import { Meal } from "@/types/meals";
 
 export default function MyRecipesPage() {
   const favoriteIds = useFavoritesStore((state) => state.favoriteIds);
-  console.log(favoriteIds, "favorites");
+  const hasHydrated = useFavoritesStore((state) => state.hasHydrated);
 
   const results = useQueries({
     queries: favoriteIds.map((id) => ({
       queryKey: ["meal", id],
       queryFn: () => fetchMealById(id),
+      enabled: hasHydrated,
     })),
   });
 
-  const isLoading = results.some((result) => result.isLoading);
+  const isLoading = !hasHydrated || results.some((result) => result.isLoading);
+
+  if (isLoading)
+    return (
+      <MaxWidthWrapper className="px-5 md:p-0">
+        <RecipesDisplaySkeleton
+          title="Loading Recipes..."
+          skeletonCards={favoriteIds.length}
+        />
+      </MaxWidthWrapper>
+    );
+
   const hasError = results.some((result) => result.error);
 
   const meals: Meal[] = results
     .filter((result) => result.data)
     .map((result) => result.data as Meal);
-
-  console.log(meals, "meals");
 
   return (
     <MaxWidthWrapper className="px-5 md:p-0">
@@ -44,12 +54,7 @@ export default function MyRecipesPage() {
           Some recipes couldn&apos;t be loaded.
         </p>
       )}
-
-      {isLoading && meals.length === 0 ? (
-        <p className="text-center">Loading...</p>
-      ) : (
-        <RecipesDisplay meals={meals} />
-      )}
+      <RecipesDisplay meals={meals} />
     </MaxWidthWrapper>
   );
 }

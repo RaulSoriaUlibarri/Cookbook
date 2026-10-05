@@ -1,4 +1,8 @@
-import { FiltersContainer, RecipesDisplay } from "../components/index";
+import {
+  FiltersContainer,
+  RecipesDisplay,
+  RecipesDisplaySkeleton,
+} from "../components/index";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { useRecipeFilterStore } from "@/stores";
 import { useQuery } from "@tanstack/react-query";
@@ -36,12 +40,17 @@ const RecipesContainer = () => {
     gcTime: 1000 * 60 * 15,
   });
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading)
+    return (
+      <MaxWidthWrapper className="px-5 md:p-0">
+        <RecipesDisplaySkeleton title="Loading Recipes..." />
+      </MaxWidthWrapper>
+    );
   if (error) return <p>Error: {error.message}</p>;
 
   return (
     <section>
-      <MaxWidthWrapper>
+      <MaxWidthWrapper className="px-5 md:p-0">
         <FiltersContainer />
         <RecipesDisplay meals={data} />
       </MaxWidthWrapper>

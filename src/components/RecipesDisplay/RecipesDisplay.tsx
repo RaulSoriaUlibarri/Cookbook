@@ -1,9 +1,8 @@
-// RecipesDisplay.tsx
 "use client";
 
 import { useState } from "react";
-import MealCard from "./MealCard/MealCard";
-import { RecipesPagination } from "./index";
+import MealCard from "../MealCard/MealCard";
+import { RecipesPagination } from "../index";
 import { LayoutList, Grid3X3 } from "lucide-react";
 import { Meal } from "@/types/meals";
 
