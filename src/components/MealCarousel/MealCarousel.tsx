@@ -2,8 +2,8 @@
 
 import { useRef } from "react";
 import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
-import MealCard from "./MealCard/MealCard";
-import SkeletonCard from "./MealCard/SkeletonCard";
+import MealCard from "../MealCard/MealCard";
+import MealCarouselSkeleton from "./MealCarouselSkeleton";
 import { fetchCategoryMeals, fetchByIngredients } from "@/server/actions";
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
@@ -25,8 +25,6 @@ type Meal = {
   strMealThumb: string;
   strCountry: string;
 };
-
-const SKELETON_COUNT = 5;
 
 const MealCarousel = ({
   category,
@@ -51,11 +49,14 @@ const MealCarousel = ({
     staleTime: 1000 * 60 * 30,
   });
 
+  if (isLoading)
+    return <MealCarouselSkeleton title={title} featured={featured} />;
+
   if (error) return <p>Error: {error.message}</p>;
 
   const meals: Meal[] = (data ?? []).slice(0, 10);
 
-  if (!isLoading && meals.length === 0) return null;
+  if (meals.length === 0) return null;
 
   const cardWidthClasses = `flex-none snap-start w-full sm:w-[calc(50%-0.5rem)] md:w-[calc(33.333%-0.67rem)] ${
     featured ? "lg:w-[calc(25%-1.5rem)]" : "lg:w-[calc(20%-1.6rem)]"
@@ -116,8 +117,7 @@ const MealCarousel = ({
           type="button"
           aria-label="Previous meals"
           onClick={() => scrollByPage("prev")}
-          disabled={isLoading}
-          className="absolute left-0 top-1/2 z-20 -translate-y-1/2 -translate-x-1/2 rounded-full bg-emerald-600 text-white p-2 shadow-md hover:bg-emerald-700 hover:cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed dark:bg-orange-600 dark:hover:bg-orange-500"
+          className="absolute left-0 top-1/2 z-20 -translate-y-1/2 -translate-x-1/2 rounded-full bg-emerald-600 text-white p-2 shadow-md hover:bg-emerald-700 hover:cursor-pointer dark:bg-orange-600 dark:hover:bg-orange-500"
         >
           <ChevronLeft className="h-6 w-6" />
         </button>
@@ -126,27 +126,22 @@ const MealCarousel = ({
           ref={scrollRef}
           className="flex snap-x snap-mandatory gap-4 md:gap-4 lg:gap-8 overflow-x-auto scroll-smooth px-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
         >
-          {isLoading
-            ? Array.from({ length: SKELETON_COUNT }).map((_, i) => (
-                <SkeletonCard key={i} className={cardWidthClasses} />
-              ))
-            : meals.map((meal) => (
-                <MealCard
-                  key={meal.idMeal}
-                  id={meal.idMeal}
-                  name={meal.strMeal}
-                  img={meal.strMealThumb}
-                  country={meal.strCountry}
-                  className={cardWidthClasses}
-                />
-              ))}
+          {meals.map((meal) => (
+            <MealCard
+              key={meal.idMeal}
+              id={meal.idMeal}
+              name={meal.strMeal}
+              img={meal.strMealThumb}
+              country={meal.strCountry}
+              className={cardWidthClasses}
+            />
+          ))}
         </ul>
         <button
           type="button"
           aria-label="Next meals"
           onClick={() => scrollByPage("next")}
-          disabled={isLoading}
-          className="absolute right-0 top-1/2 z-20 -translate-y-1/2 translate-x-1/2 rounded-full bg-emerald-600 text-white p-2 shadow-md hover:bg-emerald-700 hover:cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed dark:bg-orange-600 dark:hover:bg-orange-500"
+          className="absolute right-0 top-1/2 z-20 -translate-y-1/2 translate-x-1/2 rounded-full bg-emerald-600 text-white p-2 shadow-md hover:bg-emerald-700 hover:cursor-pointer dark:bg-orange-600 dark:hover:bg-orange-500"
         >
           <ChevronRight className="h-6 w-6" />
         </button>

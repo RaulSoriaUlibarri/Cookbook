@@ -4,7 +4,7 @@ export { default as FiltersContainer } from "./FiltersContainer/FiltersContainer
 export { default as RecipesDisplay } from "./RecipesDisplay/RecipesDisplay";
 export { default as RecipesDisplaySkeleton } from "./RecipesDisplay/RecipesDisplaySkeleton";
 export { default as RecipesPagination } from "./RecipesPagination";
-export { default as MealCarousel } from "./MealCarousel";
+export { default as MealCarousel } from "./MealCarousel/MealCarousel";
 export { default as SearchBar } from "./SearchBar/SearchBar";
 export { default as AlphabeticalList } from "./AlphabeticalList";
 export { default as Breadcrumb } from "./UI/BreadCrumb";
