@@ -1,7 +1,7 @@
 "use client";
 
 import { Dialog, Flex, TextField } from "@radix-ui/themes";
-import { fetchMeal } from "@/server/actions";
+import { fetchMealById } from "@/server/actions";
 import { useQuery } from "@tanstack/react-query";
 import IngredientsList from "./IngredientsList";
 import { CircleX, Flag } from "lucide-react";
@@ -12,7 +12,7 @@ type RecipeDialogProps = {
 
 const RecipeDialog = ({ id }: RecipeDialogProps) => {
   const { data, error, isLoading } = useQuery({
-    queryFn: () => fetchMeal(id),
+    queryFn: () => fetchMealById(id),
     queryKey: ["meal", id],
     enabled: !!id,
     staleTime: 1000 * 60 * 30,
@@ -85,7 +85,7 @@ const RecipeDialog = ({ id }: RecipeDialogProps) => {
     <Dialog.Root>
       <Dialog.Trigger>
         <button
-          onClick={() => fetchMeal}
+          onClick={() => fetchMealById}
           className="w-full rounded-xl border border-black hover:text-customPurple hover:border-customPurple dark:border-slate-600"
         >
           Read Recipe

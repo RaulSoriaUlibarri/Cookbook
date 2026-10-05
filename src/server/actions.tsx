@@ -51,14 +51,14 @@ export async function fetchCategoryMeals(categorySelected: String | null) {
   return data.meals;
 }
 
-export async function fetchMeal(mealSelected: String) {
-  const url = `https://themealdb.com/api/json/v1/1/lookup.php?i=${mealSelected}`;
+export async function fetchMealById(mealId: string) {
+  const url = `https://themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`;
   const response = await fetch(url);
 
   if (!response.ok)
     throw new Error(`Error fetching meal, info: ${response.statusText}`);
   const data = await response.json();
-  return data.meals;
+  return data.meals?.[0] ?? null;
 }
 
 export async function fetchByIngredients(mealSelected: String) {
