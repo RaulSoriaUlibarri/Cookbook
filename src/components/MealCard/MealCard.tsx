@@ -1,9 +1,10 @@
 "use client";
 
 import { Bookmark, BookmarkPlus } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { Toast } from "@/components";
+import { useFavoritesStore } from "@/stores";
 
 type MealCardProps = {
   id: string;
@@ -24,39 +25,13 @@ const MealCard = ({
   variant = "grid",
   className = "",
 }: MealCardProps) => {
-  const [isSaved, setIsSaved] = useState(false);
   const [expanded, setExpanded] = useState(false);
   const [showToast, setShowToast] = useState(false);
 
-  useEffect(() => {
-    const saved = JSON.parse(localStorage.getItem("savedRecipes") || "[]");
-    setIsSaved(saved.includes(id));
-  }, [id]);
-
-  function saveRecipe(e: React.MouseEvent) {
-    e.preventDefault();
-    e.stopPropagation();
-
-    const saved: string[] = JSON.parse(
-      localStorage.getItem("savedRecipes") || "[]",
-    );
-
-    let updated: string[];
-    const wasAlreadySaved = saved.includes(id);
-
-    if (wasAlreadySaved) {
-      updated = saved.filter((recipeId) => recipeId !== id);
-    } else {
-      updated = [...saved, id];
-    }
-
-    localStorage.setItem("savedRecipes", JSON.stringify(updated));
-    setIsSaved(!wasAlreadySaved);
-
-    if (!wasAlreadySaved) {
-      setShowToast(true);
-    }
-  }
+  const toggleFavorite = useFavoritesStore((state) => state.toggleFavorite);
+  const isFavorite = useFavoritesStore((state) =>
+    state.favoriteIds.includes(id),
+  );
 
   function toggleExpanded(e: React.MouseEvent) {
     e.preventDefault();
@@ -111,10 +86,10 @@ const MealCard = ({
           </p>
         </div>
         <button
-          onClick={saveRecipe}
+          onClick={() => toggleFavorite(id)}
           className={`absolute z-20 ${variant === "grid" ? "top-3 right-3" : "top-2 right-2"} flex h-10 cursor-pointer`}
         >
-          {isSaved ? (
+          {isFavorite ? (
             <BookmarkPlus
               strokeWidth={1}
               color="#065F46"
@@ -131,7 +106,6 @@ const MealCard = ({
           )}
         </button>
       </li>
-
       <Toast
         message="Recipe added to favorites"
         show={showToast}
