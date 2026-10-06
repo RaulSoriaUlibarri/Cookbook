@@ -1,7 +1,7 @@
 type IngredientDetailsProps = {
   name: string;
-  description: string;
-  image: string;
+  description: string | null;
+  image: string | null;
 };
 
 const IngredientDetails = ({
