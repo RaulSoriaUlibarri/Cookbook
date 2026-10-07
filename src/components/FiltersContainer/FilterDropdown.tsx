@@ -22,14 +22,25 @@ const FilterDropdown = ({
 
   return (
     <div
-      className="relative inline-block px-5 z-50"
+      className="relative inline-block z-50"
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >
       <Link
         href={href}
         aria-label={arialLabel}
-        className="cursor-pointer px-3 py-2 rounded font-bold text-md hover:underline"
+        className="
+      block
+      px-5
+      py-2
+      rounded
+      font-bold
+      text-md
+      hover:underline
+      hover:text-emerald-600
+      dark:text-gray-200
+      dark:hover:text-orange-400
+    "
       >
         {label.toUpperCase()}
       </Link>
@@ -38,7 +49,7 @@ const FilterDropdown = ({
           {options.map((item) => (
             <li
               key={item}
-              className="px-3 py-2 hover:bg-blue-100 dark:hover:bg-gray-500 cursor-pointer dark:text-white"
+              className="px-3 py-2 hover:bg-blue-100 dark:hover:bg-gray-500 cursor-pointer dark:hover:text-orange-400"
               onClick={() => handleChange(item)}
             >
               {item}

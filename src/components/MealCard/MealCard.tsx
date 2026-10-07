@@ -43,8 +43,12 @@ const MealCard = ({
     <>
       <li
         id={id}
-        className={`relative rounded-lg shadow-md dark:shadow-slate-900/40 border border-gray-200 dark:border-none cursor-pointer 
-            ${variant === "grid" ? "flex flex-col" : "flex flex-row items-center p-2 gap-4"} ${className}`}
+        className={`relative overflow-hidden rounded-lg cursor-pointer
+          bg-white border border-gray-200 shadow-md
+          dark:bg-slate-800 dark:border-slate-700 dark:shadow-slate-900/40
+          transition duration-200 hover:-translate-y-1 hover:shadow-lg
+          dark:hover:border-orange-500/50
+          ${variant === "grid" ? "flex flex-col border-b-2 border-b-emerald-600 dark:border-b-orange-500" : "flex flex-row items-center p-2 gap-4"} ${className}`}
       >
         <Link href={`/recipe/${id}`} className="absolute inset-0 z-10"></Link>
         <div
@@ -55,8 +59,7 @@ const MealCard = ({
           }
         >
           <img
-            className={`object-cover 
-              ${variant === "grid" ? "rounded-tl-lg rounded-tr-lg w-full h-full" : "rounded-lg  w-full h-full"}`}
+            className={`object-cover w-full h-full ${variant === "grid" ? "" : "rounded-lg"}`}
             src={img}
             alt={name}
           />
@@ -81,27 +84,23 @@ const MealCard = ({
           >
             {name}
           </p>
-          <p className="mb-2 text-sm font-semibold text-slate-800 dark:text-slate-300">
-            {country} {category ? -(<span>{category}</span>) : ""}
+          <p className="mb-2 text-sm font-semibold text-slate-600 dark:text-slate-400">
+            {[country, category].filter(Boolean).join(" - ")}
           </p>
         </div>
         <button
           onClick={() => toggleFavorite(id)}
-          className={`absolute z-20 ${variant === "grid" ? "top-3 right-3" : "top-2 right-2"} flex h-10 cursor-pointer`}
+          className={`absolute z-20 ${variant === "grid" ? "top-1 right-1" : "top-2 right-2"} flex h-10 hover:cursor-pointer`}
         >
           {isFavorite ? (
-            <BookmarkPlus
-              strokeWidth={1}
-              color="#065F46"
-              fill="#D1FAE5"
-              className="w-8 h-8 dark:drop-shadow-md"
+            <Bookmark
+              strokeWidth={2}
+              className="w-10 h-10 text-emerald-700 fill-emerald-700 dark:drop-shadow-md dark:text-orange-500 dark:fill-orange-500"
             />
           ) : (
-            <Bookmark
-              strokeWidth={1}
-              color="#374151"
-              fill="white"
-              className="w-8 h-8 dark:drop-shadow-md"
+            <BookmarkPlus
+              strokeWidth={2}
+              className="w-10 h-10 text-emerald-600 hover:text-emerald-700 hover:fill-emerald-700 dark:text-orange-400 dark:drop-shadow-md dark:hover:text-orange-500 dark:hover:fill-orange-500"
             />
           )}
         </button>
