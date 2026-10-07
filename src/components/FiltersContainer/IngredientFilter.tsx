@@ -36,7 +36,7 @@ const IngredientFilter = () => {
       <FilterSkeleton
         label="ingredient"
         arialLabel="Link to All Ingredients"
-        href="all-ingredient"
+        href="all-ingredients"
       />
     );
   if (error) return <p>Error: {error.message}</p>;
