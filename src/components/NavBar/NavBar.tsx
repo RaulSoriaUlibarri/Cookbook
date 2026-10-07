@@ -35,22 +35,12 @@ const NavBar = () => {
                 <NavLink
                   label="Recipes"
                   route="/directory"
-                  icon={
-                    <CookingPot
-                      className="mr-2 hover:text-emerald-600"
-                      size={20}
-                    />
-                  }
+                  icon={<CookingPot className="mr-2" size={20} />}
                 />
                 <NavLink
                   label="Favorites"
                   route="/myRecipes"
-                  icon={
-                    <ChefHat
-                      className="mr-2 hover:text-emerald-600"
-                      size={20}
-                    />
-                  }
+                  icon={<ChefHat className="mr-2" size={20} />}
                 />
                 <ThemeToggle />
                 <ProfileClient />
