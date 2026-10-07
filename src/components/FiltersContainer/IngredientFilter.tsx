@@ -2,6 +2,7 @@ import FilterDropdown from "./FilterDropdown";
 import { fetchIngredientsList } from "@/server/actions";
 import { useQuery } from "@tanstack/react-query";
 import { useRecipeFilterStore } from "@/stores/index";
+import FilterSkeleton from "./FilterSkeleton";
 
 const IngredientFilter = () => {
   const setFilter = useRecipeFilterStore((state) => state.setFilter);
@@ -30,7 +31,14 @@ const IngredientFilter = () => {
     }
   }
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading)
+    return (
+      <FilterSkeleton
+        label="ingredient"
+        arialLabel="Link to All Ingredients"
+        href="all-ingredient"
+      />
+    );
   if (error) return <p>Error: {error.message}</p>;
 
   function handleIngredientChange(categorieSelected: string) {
@@ -41,6 +49,7 @@ const IngredientFilter = () => {
     <FilterDropdown
       href="all-ingredients"
       label="Ingredient"
+      arialLabel="Link to All Ingredients"
       handleChange={handleIngredientChange}
       options={ingredientsArray.slice(0, 20)}
     />
