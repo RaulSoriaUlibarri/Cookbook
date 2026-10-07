@@ -8,6 +8,7 @@ export { default as RecipesDisplaySkeleton } from "./RecipesDisplay/RecipesDispl
 export { default as RecipesPagination } from "./RecipesPagination";
 export { default as MealCarousel } from "./MealCarousel/MealCarousel";
 export { default as SearchBar } from "./SearchBar/SearchBar";
-export { default as AlphabeticalList } from "./AlphabeticalList";
+export { default as AlphabeticalList } from "./AlphabeticalList/AlphabeticalList";
+export { default as AlphabeticalListSkeleton } from "./AlphabeticalList/AlphabeticalListSkeleton";
 export { default as Breadcrumb } from "./UI/BreadCrumb";
 export { default as Toast } from "./UI/Toast";
