@@ -1,6 +1,8 @@
 export { default as NavBar } from "./NavBar/NavBar";
 export { default as RecipeSearchBar } from "./RecipeSearchBar";
 export { default as FiltersContainer } from "./FiltersContainer/FiltersContainer";
+export { default as IngredientDetails } from "./IngredientDetails/IngredientDetails";
+export { default as IngredientDetailsSkeleton } from "./IngredientDetails/IngredientDetailsSkeleton";
 export { default as RecipesDisplay } from "./RecipesDisplay/RecipesDisplay";
 export { default as RecipesDisplaySkeleton } from "./RecipesDisplay/RecipesDisplaySkeleton";
 export { default as RecipesPagination } from "./RecipesPagination";

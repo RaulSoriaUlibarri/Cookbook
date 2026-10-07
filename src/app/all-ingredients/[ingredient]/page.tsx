@@ -8,7 +8,9 @@ import {
   Breadcrumb,
   RecipesDisplay,
   RecipesDisplaySkeleton,
-} from "@/components";
+  IngredientDetails,
+  IngredientDetailsSkeleton,
+} from "@/components/index";
 
 type PageProps = {
   params: Promise<{ ingredient: string }>;
@@ -37,11 +39,14 @@ export default function IngredientRecipesPage({ params }: PageProps) {
   if (loadingInfo || loadingMeals)
     return (
       <MaxWidthWrapper>
+        <IngredientDetailsSkeleton />
         <RecipesDisplaySkeleton title="Loading Recipes..." />
       </MaxWidthWrapper>
     );
   if (errorInfo) return <p>Error {errorInfo.message}</p>;
   if (!ingredientInfo) return <p>Ingrediente no encontrado</p>;
+
+  const { image, name, description } = ingredientInfo;
 
   return (
     <>
@@ -53,21 +58,11 @@ export default function IngredientRecipesPage({ params }: PageProps) {
               { label: decodedIngredient },
             ]}
           />
-          <h1 className="font-roboto-slab text-emerald-950 text-xl md:text-2xl lg:text-4xl my-5 lg:my-10 mx-auto w-fit font-bold dark:text-white text-center">
-            {ingredientInfo.name} Recipes
-          </h1>
-          {ingredientInfo.image && (
-            <img
-              src={ingredientInfo.image}
-              alt={ingredientInfo.name}
-              className="max-w-[250px] rounded-lg mx-auto lg:max-w-[450px] dark:bg-gray-100 "
-            />
-          )}
-          {ingredientInfo.description && (
-            <p className="text-justify mt-10 dark:text-white max-w-[550px] md:max-w-3/4 mx-auto lg:text-lg">
-              {ingredientInfo.description}
-            </p>
-          )}
+          <IngredientDetails
+            name={name}
+            description={description}
+            image={image}
+          />
           <RecipesDisplay meals={meals} />
         </section>
       </MaxWidthWrapper>
