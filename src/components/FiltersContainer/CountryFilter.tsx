@@ -2,6 +2,7 @@ import FilterDropdown from "./FilterDropdown";
 import { fetchCountriesList } from "@/server/actions";
 import { useQuery } from "@tanstack/react-query";
 import { useRecipeFilterStore } from "@/stores/index";
+import FilterSkeleton from "./FilterSkeleton";
 
 const CountryFilter = () => {
   const setFilter = useRecipeFilterStore((state) => state.setFilter);
@@ -27,7 +28,14 @@ const CountryFilter = () => {
     }
   }
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading)
+    return (
+      <FilterSkeleton
+        label="Country"
+        arialLabel="Link to all Countries"
+        href="all-countries"
+      />
+    );
   if (error) return <p>Error: {error.message}</p>;
 
   function handleCountryChange(categorieSelected: string) {
@@ -37,8 +45,9 @@ const CountryFilter = () => {
   return (
     <FilterDropdown
       href="all-countries"
-      options={countriesArray.slice(0, 20)}
       label="Country"
+      arialLabel="Link to All Countries"
+      options={countriesArray.slice(0, 20)}
       handleChange={handleCountryChange}
     />
   );

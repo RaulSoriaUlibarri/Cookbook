@@ -5,6 +5,7 @@ import { useState } from "react";
 
 type FilterDropdownProps = {
   label: string;
+  arialLabel: string;
   options: string[];
   handleChange: (value: string) => void;
   href: string;
@@ -12,6 +13,7 @@ type FilterDropdownProps = {
 
 const FilterDropdown = ({
   label,
+  arialLabel,
   options,
   handleChange,
   href,
@@ -26,6 +28,7 @@ const FilterDropdown = ({
     >
       <Link
         href={href}
+        aria-label={arialLabel}
         className="cursor-pointer px-3 py-2 rounded font-bold text-md hover:underline"
       >
         {label.toUpperCase()}

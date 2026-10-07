@@ -43,6 +43,7 @@ const RecipesContainer = () => {
   if (isLoading)
     return (
       <MaxWidthWrapper className="px-5 md:p-0">
+        <FiltersContainer />
         <RecipesDisplaySkeleton title="Loading Recipes..." />
       </MaxWidthWrapper>
     );
