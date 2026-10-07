@@ -87,21 +87,17 @@ const MealCard = ({
         </div>
         <button
           onClick={() => toggleFavorite(id)}
-          className={`absolute z-20 ${variant === "grid" ? "top-3 right-3" : "top-2 right-2"} flex h-10 cursor-pointer`}
+          className={`absolute z-20 ${variant === "grid" ? "top-1 right-1" : "top-2 right-2"} flex h-10 hover:cursor-pointer`}
         >
           {isFavorite ? (
-            <BookmarkPlus
-              strokeWidth={1}
-              color="#065F46"
-              fill="#D1FAE5"
-              className="w-8 h-8 dark:drop-shadow-md"
+            <Bookmark
+              strokeWidth={2}
+              className="w-10 h-10 text-emerald-700 fill-emerald-700 dark:drop-shadow-md dark:text-orange-500 dark:fill-orange-500"
             />
           ) : (
-            <Bookmark
-              strokeWidth={1}
-              color="#374151"
-              fill="white"
-              className="w-8 h-8 dark:drop-shadow-md"
+            <BookmarkPlus
+              strokeWidth={2}
+              className="w-10 h-10 text-emerald-600 hover:text-emerald-700 hover:fill-emerald-700 dark:text-orange-400 dark:drop-shadow-md dark:hover:text-orange-500 dark:hover:fill-orange-500"
             />
           )}
         </button>
