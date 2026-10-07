@@ -33,8 +33,8 @@ const RecipesDisplay = ({ meals, title }: RecipesDisplayProps) => {
         <button
           className={
             listLayout === "grid"
-              ? "cursor-pointer text-emerald-600"
-              : "cursor-pointer hover:text-emerald-800"
+              ? "cursor-pointer text-emerald-600 dark:text-orange-500"
+              : "cursor-pointer hover:text-emerald-800 dark:hover:text-orange-400"
           }
           onClick={() => setListLayout("grid")}
         >
@@ -43,8 +43,8 @@ const RecipesDisplay = ({ meals, title }: RecipesDisplayProps) => {
         <button
           className={
             listLayout === "list"
-              ? "cursor-pointer text-emerald-600"
-              : "cursor-pointer hover:text-emerald-800"
+              ? "cursor-pointer text-emerald-600 dark:text-orange-500"
+              : "cursor-pointer hover:text-emerald-800 dark:hover:text-orange-400 "
           }
           onClick={() => setListLayout("list")}
         >
