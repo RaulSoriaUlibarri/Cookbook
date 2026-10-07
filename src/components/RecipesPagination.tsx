@@ -1,6 +1,7 @@
 "use client";
 
 import Pagination from "@mui/material/Pagination";
+import PaginationItem from "@mui/material/PaginationItem";
 import Stack from "@mui/material/Stack";
 
 type PaginationProps = {
@@ -16,19 +17,19 @@ const RecipesPagination = ({ totalPages, handleChange }: PaginationProps) => {
           count={totalPages}
           size="large"
           onChange={(_, value) => handleChange(value)}
-          sx={{
-            "& .MuiPaginationItem-root": {
-              backgroundColor: "#059669", // emerald-600
-              color: "#fff",
-              "&:hover": {
-                backgroundColor: "#047857", // emerald-700
-              },
-              "&.Mui-selected": {
-                backgroundColor: "#047857", // keep selected consistent
-                color: "#fff",
-              },
-            },
-          }}
+          renderItem={(item) => (
+            <PaginationItem
+              {...item}
+              className="
+                !bg-emerald-600
+                !text-gray-200
+                hover:!bg-emerald-700
+                [&.Mui-selected]:!bg-emerald-700
+                dark:!bg-orange-500
+                dark:hover:!bg-orange-400
+                dark:[&.Mui-selected]:!bg-orange-400"
+            />
+          )}
         />
       </Stack>
     </div>
