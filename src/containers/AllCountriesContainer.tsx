@@ -1,6 +1,6 @@
 "use client";
 
-import { AlphabeticalList } from "@/components";
+import { AlphabeticalList, AlphabeticalListSkeleton } from "@/components";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { fetchCountriesList } from "@/server/actions";
 import { useQuery } from "@tanstack/react-query";
@@ -18,7 +18,15 @@ const AllCountriesContainer = () => {
     gcTime: 1000 * 60 * 15,
   });
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading)
+    return (
+      <MaxWidthWrapper className="px-10 pt-10">
+        <h2 className="font-roboto-slab text-emerald-950 w-fit mx-auto text-3xl font-bold md:text-4xl md:my-10 dark:text-white">
+          All Countries
+        </h2>
+        <AlphabeticalListSkeleton />
+      </MaxWidthWrapper>
+    );
   if (error) return <p>Error: {error.message}</p>;
   const grouped: Record<string, string[]> = {};
 
