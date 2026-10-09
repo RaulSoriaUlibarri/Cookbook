@@ -4,6 +4,7 @@ import { fetchMealById } from "@/server/actions";
 import { useQuery } from "@tanstack/react-query";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import Link from "next/link";
+import { IngredientsSection } from "@/components";
 
 type RecipeContainerProps = {
   id: string;
@@ -103,24 +104,7 @@ const RecipeContainer = ({ id }: RecipeContainerProps) => {
           )}
         </div>
         <div className="p-6  mx-auto max-w-2/3 ">
-          <h3 className="text-2xl font-bold text-yellow-800 mb-4 border-b pb-5 mb-10  dark:text-orange-500">
-            Ingredients
-          </h3>
-          <ul className="space-y-3">
-            {ingredients.map(({ ing, measure }) => (
-              <li key={ing} className="flex items-center gap-3 rounded-md p-2">
-                <img
-                  src={`https://www.themealdb.com/images/ingredients/${ing}-Small.png`}
-                  alt={ing}
-                  className="w-10 h-10 object-contain"
-                />
-                <span className="font-medium text-gray-800  dark:text-white">
-                  {ing}
-                </span>
-                <span className="text-gray-600 dark:text-white">{measure}</span>
-              </li>
-            ))}
-          </ul>
+          <IngredientsSection ingredients={ingredients} />
           <div className="text-yellow-800 p-2 mt-10 ">
             <h3 className="text-2xl font-bold border-b pb-5 mb-4 dark:text-orange-500">
               Instructions
