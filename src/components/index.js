@@ -12,3 +12,4 @@ export { default as AlphabeticalList } from "./AlphabeticalList/AlphabeticalList
 export { default as AlphabeticalListSkeleton } from "./AlphabeticalList/AlphabeticalListSkeleton";
 export { default as Breadcrumb } from "./UI/BreadCrumb";
 export { default as Toast } from "./UI/Toast";
+export { default as IngredientsSection } from "./IngredientsSection/IngredientsSection";
