@@ -103,7 +103,7 @@ const RecipeContainer = ({ id }: RecipeContainerProps) => {
             </div>
           )}
         </div>
-        <div className="p-6  mx-auto max-w-2/3 ">
+        <div className="p-6  mx-auto max-w-4/5 ">
           <IngredientsSection ingredients={ingredients} />
           <div className="text-yellow-800 p-2 mt-10 ">
             <h3 className="text-2xl font-bold border-b pb-5 mb-4 dark:text-orange-500">

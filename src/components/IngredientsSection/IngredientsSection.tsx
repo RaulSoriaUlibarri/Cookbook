@@ -10,23 +10,29 @@ type IngredientsSectionProps = {
 const IngredientsSection = ({ ingredients }: IngredientsSectionProps) => {
   return (
     <section>
-      <h3 className="text-2xl font-bold text-yellow-800 mb-4 border-b pb-5 mb-10  dark:text-orange-500">
+      <h3 className="mb-10 border-b border-yellow-800/30 pb-5 text-2xl font-bold text-yellow-800 dark:border-slate-700 dark:text-orange-500">
         Ingredients
       </h3>
-      <ul className="space-y-3">
+      <ul className="grid grid-cols-1 gap-4 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4">
         {ingredients.map(({ ing, measure }, i) => (
-          <li key={i} className="flex items-center gap-3 rounded-md p-2">
+          <li
+            key={i}
+            className="flex flex-col items-center gap-2 rounded-lg border border-gray-200 bg-white p-3 text-center shadow-sm dark:border-slate-700 dark:bg-slate-800"
+          >
             <img
-              src={`https://www.themealdb.com/images/ingredients/${ing}-Small.png`}
+              src={`https://www.themealdb.com/images/ingredients/${encodeURIComponent(ing)}-Small.png`}
               alt={ing}
-              className="object-contain w-10 h-10 "
+              loading="lazy"
+              className="size-16 md:size-20 xl:size-30 object-contain"
             />
-            <span className="font-medium text-gray-800  dark:text-white">
-              {ing}
-            </span>
-            <span className="text-gray-600 dark:text-white font-semibold">
-              {measure}
-            </span>
+            <div className="flex flex-wrap justify-center gap-x-1.5">
+              <span className="font-medium text-gray-800 dark:text-white">
+                {ing}
+              </span>
+              <span className="font-semibold text-emerald-700 dark:text-orange-400">
+                {measure}
+              </span>
+            </div>
           </li>
         ))}
       </ul>
