@@ -14,3 +14,4 @@ export { default as Breadcrumb } from "./UI/BreadCrumb";
 export { default as Toast } from "./UI/Toast";
 export { default as IngredientsSection } from "./IngredientsSection/IngredientsSection";
 export { default as IngredientsSectionSkeleton } from "./IngredientsSection/IngredientsSectionSkeleton";
+export { default as InstructionsSection } from "./InstructionsSection/InstructionsSection";
