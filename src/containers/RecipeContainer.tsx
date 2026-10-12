@@ -4,7 +4,7 @@ import { fetchMealById } from "@/server/actions";
 import { useQuery } from "@tanstack/react-query";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import Link from "next/link";
-import { IngredientsSection } from "@/components";
+import { IngredientsSection, InstructionsSection } from "@/components";
 
 type RecipeContainerProps = {
   id: string;
@@ -18,7 +18,6 @@ const RecipeContainer = ({ id }: RecipeContainerProps) => {
     staleTime: 1000 * 60 * 30,
   });
 
-  console.log(data);
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
@@ -105,14 +104,7 @@ const RecipeContainer = ({ id }: RecipeContainerProps) => {
         </div>
         <div className="p-6  mx-auto max-w-4/5 ">
           <IngredientsSection ingredients={ingredients} />
-          <div className="text-yellow-800 p-2 mt-10 ">
-            <h3 className="text-2xl font-bold border-b pb-5 mb-4 dark:text-orange-500">
-              Instructions
-            </h3>
-            <p className="whitespace-pre-line leading-relaxed text-gray-800 text-lg  dark:text-white">
-              {meal.strInstructions}
-            </p>
-          </div>
+          <InstructionsSection strInstructions={meal.strInstructions} />
         </div>
       </MaxWidthWrapper>
     </section>
