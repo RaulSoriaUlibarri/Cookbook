@@ -17,3 +17,4 @@ export { default as IngredientsSectionSkeleton } from "./IngredientsSection/Ingr
 export { default as InstructionsSection } from "./InstructionsSection/InstructionsSection";
 export { default as InstructionsSectionSkeleton } from "./InstructionsSection/InstructionsSectionSkeleton";
 export { default as RecipeMedia } from "./RecipeMedia/RecipeMedia";
+export { default as RecipeMediaSkeleton } from "./RecipeMedia/RecipeMediaSkeleton";
