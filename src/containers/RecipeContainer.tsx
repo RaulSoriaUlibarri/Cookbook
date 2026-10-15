@@ -8,6 +8,10 @@ import {
   InstructionsSection,
   RecipeMedia,
   RecipeHeader,
+  IngredientsSectionSkeleton,
+  InstructionsSectionSkeleton,
+  RecipeMediaSkeleton,
+  RecipeHeaderSkeleton,
 } from "@/components";
 
 type RecipeContainerProps = {
@@ -22,7 +26,17 @@ const RecipeContainer = ({ id }: RecipeContainerProps) => {
     staleTime: 1000 * 60 * 30,
   });
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading)
+    return (
+      <section className="bg-green-50 pb-10 pt-20 dark:bg-emerald-950">
+        <MaxWidthWrapper>
+          <RecipeHeaderSkeleton />
+          <RecipeMediaSkeleton />
+          <IngredientsSectionSkeleton />
+          <InstructionsSectionSkeleton />
+        </MaxWidthWrapper>
+      </section>
+    );
   if (error) return <p>Error: {error.message}</p>;
 
   const meal = data;
