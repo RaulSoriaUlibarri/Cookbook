@@ -19,3 +19,4 @@ export { default as InstructionsSectionSkeleton } from "./InstructionsSection/In
 export { default as RecipeMedia } from "./RecipeMedia/RecipeMedia";
 export { default as RecipeMediaSkeleton } from "./RecipeMedia/RecipeMediaSkeleton";
 export { default as RecipeHeader } from "./RecipeHeader/RecipeHeader";
+export { default as RecipeHeaderSkeleton } from "./RecipeHeaderSkeleton";
