@@ -25,7 +25,7 @@ const MobileNav = ({ isAuth }: { isAuth: boolean }) => {
     <div className="sm:hidden">
       <Menu
         onClick={toggleOpen}
-        className="relative z-50 h-5 w-5 text-zinc-700"
+        className="relative z-50 h-5 w-5 text-zinc-700 dark:text-gray-200"
       />
 
       {isOpen ? (

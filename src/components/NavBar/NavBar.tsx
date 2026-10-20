@@ -11,7 +11,6 @@ import FiltersContainer from "../FiltersContainer/FiltersContainer";
 
 const NavBar = () => {
   // const { user } = useUser();
-
   return (
     <header className="sticky inset-x-0 top-0 z-30 mx-auto w-2/3 bg-transparent text-sm text-gray-600 backdrop-blur-lg transition-all dark:text-white">
       <MaxWidthWrapper className="w-full max-w-none md:px-0">
@@ -25,9 +24,7 @@ const NavBar = () => {
               />
             </Link>
           </div>
-
           <SearchBar />
-
           <div className="flex h-full w-auto items-center justify-end">
             <div className="hidden h-full items-center text-sm sm:flex">
               <NavLink
@@ -42,8 +39,8 @@ const NavBar = () => {
               />
               <ThemeToggle />
               <ProfileClient />
-              <MobileNav isAuth={false} />
             </div>
+            <MobileNav isAuth={false} />
           </div>
         </div>
         <div className="hidden sm:block pb-3">
