@@ -5,7 +5,7 @@ import Link from "next/link";
 import MaxWidthWrapper from "../MaxWidthWrapper";
 import { MobileNav, ThemeToggle, ProfileClient } from "./index";
 import SearchBar from "../SearchBar/SearchBar";
-import { CookingPot, ChefHat, LogIn, LogOut } from "lucide-react";
+import { CookingPot, ChefHat } from "lucide-react";
 import NavLink from "./NavLink";
 import FiltersContainer from "../FiltersContainer/FiltersContainer";
 
@@ -13,48 +13,44 @@ const NavBar = () => {
   // const { user } = useUser();
 
   return (
-    <>
-      <nav className="sticky w-2/3 inset-x-0 top-0 mx-auto flex items-center z-30 bg-transparent backdrop-blur-lg transition-all text-gray-600 text-sm dark:text-white">
-        <MaxWidthWrapper className="w-full h-full max-w-none md:px-0">
-          <div className="flex h-full items-center justify-between md:justify-between px-5 ">
-            <div className="flex items-center">
-              <Link
-                href="/"
-                className="mr-4 z-40 shrink-0 hover:cursor-pointer"
-              >
-                <img
-                  className="h-20 w-auto md:h-23"
-                  src="/images/logo.png"
-                  alt="Site logo"
-                />
-              </Link>
-            </div>
+    <header className="sticky inset-x-0 top-0 z-30 mx-auto w-2/3 bg-transparent text-sm text-gray-600 backdrop-blur-lg transition-all dark:text-white">
+      <MaxWidthWrapper className="w-full max-w-none md:px-0">
+        <div className="flex h-20 items-center justify-between px-5 md:h-23">
+          <div className="flex items-center">
+            <Link href="/" className="mr-4 z-40 shrink-0 hover:cursor-pointer">
+              <img
+                className="h-20 w-auto md:h-23"
+                src="/images/logo.png"
+                alt="Site logo"
+              />
+            </Link>
+          </div>
 
-            <SearchBar />
-            <div className="flex justify-end items-center w-auto h-full">
-              <div className="hidden h-full items-center sm:flex text-sm">
-                <NavLink
-                  label="Recipes"
-                  route="/directory"
-                  icon={<CookingPot className="mr-2" size={20} />}
-                />
-                <NavLink
-                  label="Favorites"
-                  route="/myRecipes"
-                  icon={<ChefHat className="mr-2" size={20} />}
-                />
-                <ThemeToggle />
-                <ProfileClient />
-                <MobileNav isAuth={false} />
-              </div>
+          <SearchBar />
+
+          <div className="flex h-full w-auto items-center justify-end">
+            <div className="hidden h-full items-center text-sm sm:flex">
+              <NavLink
+                label="Recipes"
+                route="/directory"
+                icon={<CookingPot className="mr-2" size={20} />}
+              />
+              <NavLink
+                label="Favorites"
+                route="/myRecipes"
+                icon={<ChefHat className="mr-2" size={20} />}
+              />
+              <ThemeToggle />
+              <ProfileClient />
+              <MobileNav isAuth={false} />
             </div>
           </div>
-          <div className="w-full py-5 hiddenflex justify-start">
-            <FiltersContainer />
-          </div>
-        </MaxWidthWrapper>
-      </nav>
-    </>
+        </div>
+        <div className="hidden sm:block pb-3">
+          <FiltersContainer />
+        </div>
+      </MaxWidthWrapper>
+    </header>
   );
 };
 

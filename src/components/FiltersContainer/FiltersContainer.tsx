@@ -43,7 +43,7 @@ const FiltersContainer = () => {
     router.push(`${base}/${encodeURIComponent(value)}`);
 
   return (
-    <div className=" hidden sm:flex sm:justify-center">
+    <div className="flex justify-center">
       <FilterMegaMenu
         items={[
           {
