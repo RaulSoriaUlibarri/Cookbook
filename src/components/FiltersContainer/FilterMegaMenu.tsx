@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowRight, ChevronDown } from "lucide-react";
 
 type FilterItem = {
@@ -10,7 +10,6 @@ type FilterItem = {
   options: string[];
   handleChange: (value: string) => void;
   href: string;
-  // Si se define, solo se muestran las primeras N opciones (el resto queda en "See all")
   maxOptions?: number;
 };
 
@@ -18,16 +17,12 @@ type FilterMegaMenuProps = {
   items: FilterItem[];
 };
 
-// Máximo de columnas que caben en el panel (columnas de 10rem + separación de 1.5rem)
 const MAX_COLUMNS = 5;
-// Máximo de filas que caben en el panel sin hacer scroll
 const MAX_ROWS = 6;
 
-// Cuántas columnas usar según la cantidad de opciones
 const getColumnCount = (total: number) =>
   Math.max(1, Math.min(Math.ceil(total / MAX_ROWS), MAX_COLUMNS));
 
-// Reparte las opciones en columnas, llenando cada una de arriba hacia abajo
 const splitIntoColumns = (items: string[], columns: number) => {
   const perColumn = Math.ceil(items.length / columns);
   return Array.from({ length: columns }, (_, i) =>
@@ -35,9 +30,31 @@ const splitIntoColumns = (items: string[], columns: number) => {
   ).filter((column) => column.length > 0);
 };
 
+const getTriggerClasses = (isActive: boolean) =>
+  `inline-flex items-center gap-1.5 border-b-2 px-5 py-2 text-md font-bold transition-colors ${
+    isActive
+      ? "border-emerald-600 text-emerald-600 dark:border-orange-400 dark:text-orange-400"
+      : "border-transparent dark:text-gray-200"
+  }`;
+
 const FilterMegaMenu = ({ items }: FilterMegaMenuProps) => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
   const close = () => setActiveIndex(null);
+
+  useEffect(() => {
+    if (activeIndex === null) return;
+
+    const handlePointerDown = (e: PointerEvent) => {
+      if (!containerRef.current?.contains(e.target as Node)) {
+        setActiveIndex(null);
+      }
+    };
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    return () => document.removeEventListener("pointerdown", handlePointerDown);
+  }, [activeIndex]);
 
   const active = activeIndex !== null ? items[activeIndex] : null;
   const showPanel = !!active && active.options.length > 0;
@@ -51,10 +68,15 @@ const FilterMegaMenu = ({ items }: FilterMegaMenuProps) => {
 
   return (
     <div
+      ref={containerRef}
       className="relative z-50"
-      onMouseLeave={close}
+      onPointerLeave={(e) => {
+        if (e.pointerType === "mouse") close();
+      }}
       onBlur={(e) => {
-        if (!e.currentTarget.contains(e.relatedTarget)) close();
+        if (e.relatedTarget && !e.currentTarget.contains(e.relatedTarget)) {
+          close();
+        }
       }}
       onKeyDown={(e) => {
         if (e.key === "Escape") close();
@@ -63,35 +85,42 @@ const FilterMegaMenu = ({ items }: FilterMegaMenuProps) => {
       <nav className="flex items-center">
         {items.map((item, index) => {
           const isActive = index === activeIndex;
-          const hasOptions = item.options.length > 0;
-
+          if (item.options.length === 0) {
+            return (
+              <Link
+                key={item.label}
+                href={item.href}
+                aria-label={item.arialLabel}
+                className={getTriggerClasses(false)}
+              >
+                {item.label.toUpperCase()}
+              </Link>
+            );
+          }
           return (
-            <Link
+            <button
               key={item.label}
-              href={item.href}
+              type="button"
               aria-label={item.arialLabel}
-              aria-haspopup={hasOptions ? "true" : undefined}
-              aria-expanded={hasOptions ? isActive : undefined}
-              onMouseEnter={() => setActiveIndex(index)}
-              onFocus={() => setActiveIndex(index)}
-              className={`inline-flex items-center gap-1.5 border-b-2 px-5 py-2 text-md font-bold transition-colors ${
-                isActive
-                  ? "border-emerald-600 text-emerald-600 dark:border-orange-400 dark:text-orange-400"
-                  : "border-transparent dark:text-gray-200"
-              }`}
+              aria-haspopup="true"
+              aria-expanded={isActive}
+              onPointerEnter={(e) => {
+                if (e.pointerType === "mouse") setActiveIndex(index);
+              }}
+              onClick={() => setActiveIndex(isActive ? null : index)}
+              className={`cursor-pointer ${getTriggerClasses(isActive)}`}
             >
               {item.label.toUpperCase()}
-              {hasOptions && (
-                <ChevronDown
-                  className={`size-4 transition-transform ${
-                    isActive ? "rotate-180" : ""
-                  }`}
-                />
-              )}
-            </Link>
+              <ChevronDown
+                className={`size-4 transition-transform ${
+                  isActive ? "rotate-180" : ""
+                }`}
+              />
+            </button>
           );
         })}
       </nav>
+
       {showPanel && active && (
         <div className="absolute left-1/2 top-full h-[22rem] max-h-[70vh] w-[min(64rem,calc(100vw-2rem))] -translate-x-1/2 overflow-auto border-t border-gray-200 bg-white px-6 py-8 shadow-xl dark:border-white/10 dark:bg-black">
           <div className="mb-5 flex items-center justify-between gap-8 border-b border-gray-200 pb-3 dark:border-white/10">
