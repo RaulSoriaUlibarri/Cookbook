@@ -12,7 +12,7 @@ import FiltersContainer from "../FiltersContainer/FiltersContainer";
 const NavBar = () => {
   // const { user } = useUser();
   return (
-    <header className="sticky inset-x-0 top-0 z-30 mx-auto w-2/3 bg-transparent text-sm text-gray-600 backdrop-blur-lg transition-all dark:text-white">
+    <header className="mx-auto w-2/3 bg-transparent text-sm text-gray-600 backdrop-blur-lg transition-all dark:text-white">
       <MaxWidthWrapper className="w-full max-w-none md:px-0">
         <div className="flex h-20 items-center justify-between px-5 md:h-23">
           <div className="flex items-center">
