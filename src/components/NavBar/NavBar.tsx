@@ -7,13 +7,14 @@ import { MobileNav, ThemeToggle, ProfileClient } from "./index";
 import SearchBar from "../SearchBar/SearchBar";
 import { CookingPot, ChefHat, LogIn, LogOut } from "lucide-react";
 import NavLink from "./NavLink";
+import FiltersContainer from "../FiltersContainer/FiltersContainer";
 
 const NavBar = () => {
   // const { user } = useUser();
 
   return (
     <>
-      <nav className="sticky w-2/3 inset-x-0 top-0 mx-auto flex items-center z-30  h-[80px] bg-transparent backdrop-blur-lg transition-all text-gray-600 text-sm dark:text-white">
+      <nav className="sticky w-2/3 inset-x-0 top-0 mx-auto flex items-center z-30 bg-transparent backdrop-blur-lg transition-all text-gray-600 text-sm dark:text-white">
         <MaxWidthWrapper className="w-full h-full max-w-none md:px-0">
           <div className="flex h-full items-center justify-between md:justify-between px-5 ">
             <div className="flex items-center">
@@ -47,6 +48,9 @@ const NavBar = () => {
                 <MobileNav isAuth={false} />
               </div>
             </div>
+          </div>
+          <div className="w-full py-5 hiddenflex justify-start">
+            <FiltersContainer />
           </div>
         </MaxWidthWrapper>
       </nav>
