@@ -46,7 +46,7 @@ const MobileNav = ({ isAuth }: { isAuth: boolean }) => {
                 <li>
                   <Link
                     onClick={() => closeOnCurrent("/sign-in")}
-                    className="flex items-center w-full font-semibold text-bla"
+                    className="flex items-center w-full font-semibold text-green-600 dark:text-orange-500"
                     href="/myRecipes"
                   >
                     <ChefHat className="m-2" />
