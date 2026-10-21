@@ -39,7 +39,7 @@ export default function RootLayout({
       >
         <ThemeProviders>
           <ReactQueryProvider>
-            <header className=" dark:bg-emerald-950">
+            <header className="sticky top-0 z-30 dark:bg-emerald-950">
               <NavBar />
             </header>
             <Theme>{children}</Theme>
