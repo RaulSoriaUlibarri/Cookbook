@@ -25,7 +25,7 @@ const SearchInput = ({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="h-full w-full rounded-l-full border border-emerald-600 pl-3 pr-9 py-2 outline-none bg-transparent text-black dark:text-white placeholder-emerald-950/60 dark:placeholder-white [&::-webkit-search-cancel-button]:appearance-none dark:border-orange-600"
+        className="h-full w-full rounded-l-full border border-emerald-600 pl-3 pr-9 py-2 outline-none bg-transparent text-black dark:text-gray-200 placeholder-emerald-950/60 dark:placeholder-gray-200 [&::-webkit-search-cancel-button]:appearance-none dark:border-orange-600"
       />
       {value && (
         <button
