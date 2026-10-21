@@ -25,7 +25,7 @@ const NavBar = () => {
             </Link>
           </div>
           <SearchBar />
-          <div className="flex h-full w-auto items-center justify-end">
+          <div className="flex pl-2 sm:pl-0 h-full w-auto items-center justify-end">
             <div className="hidden h-full items-center text-sm sm:flex">
               <NavLink
                 label="Recipes"
