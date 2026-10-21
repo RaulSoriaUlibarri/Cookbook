@@ -25,22 +25,21 @@ const MobileNav = ({ isAuth }: { isAuth: boolean }) => {
     <div className="sm:hidden">
       <Menu
         onClick={toggleOpen}
-        className="relative z-50 h-5 w-5 text-zinc-700 dark:text-gray-200"
+        className="relative size-[30] z-50 text-zinc-700 dark:text-orange-500"
       />
-
       {isOpen ? (
         <div className="fixed animate-in slide-in-from-top-5 fade-in-20 inset-0 z-0 w-full">
-          <ul className="absolute bg-white border-b border-zinc-200 shadow-xl grid w-full gap-3 px-10 pt-20 pb-8">
+          <ul className="absolute bg-white border-b border-zinc-200 shadow-xl grid w-full gap-3 px-10 pt-20 pb-8 dark:bg-emerald-950">
             {!isAuth ? (
               <>
                 <li>
                   <Link
                     onClick={() => closeOnCurrent("/sign-up")}
-                    className="flex items-center w-full font-semibold text-green-600"
+                    className="flex items-center w-full font-semibold text-green-600 dark:text-orange-500"
                     href="/directory"
                   >
                     <CookingPot className="m-2" />
-                    Recepies
+                    Recipes
                   </Link>
                 </li>
                 <li className="my-3 h-px w-full bg-gray-300" />
@@ -48,10 +47,10 @@ const MobileNav = ({ isAuth }: { isAuth: boolean }) => {
                   <Link
                     onClick={() => closeOnCurrent("/sign-in")}
                     className="flex items-center w-full font-semibold text-bla"
-                    href="/myRecepies"
+                    href="/myRecipes"
                   >
                     <ChefHat className="m-2" />
-                    My Recepies
+                    My Recipes
                   </Link>
                 </li>
                 <li className="my-3 h-px w-full bg-gray-300" />
