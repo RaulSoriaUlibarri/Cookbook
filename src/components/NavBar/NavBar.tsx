@@ -12,9 +12,9 @@ import FiltersContainer from "../FiltersContainer/FiltersContainer";
 const NavBar = () => {
   // const { user } = useUser();
   return (
-    <header className="mx-auto w-2/3 bg-transparent text-sm text-gray-600 backdrop-blur-lg transition-all dark:text-white">
+    <header className="mx-auto w-full md:w-4/5 bg-transparent text-sm text-gray-600 backdrop-blur-lg transition-all dark:text-white">
       <MaxWidthWrapper className="w-full max-w-none md:px-0">
-        <div className="flex h-20 items-center justify-between px-5 md:h-23">
+        <div className="flex h-20 justify-between sm:px-5 md:h-23">
           <div className="flex items-center">
             <Link href="/" className="mr-4 z-40 shrink-0 hover:cursor-pointer">
               <img
@@ -43,7 +43,7 @@ const NavBar = () => {
             <MobileNav isAuth={false} />
           </div>
         </div>
-        <div className="hidden sm:block pb-3">
+        <div className="hidden sm:block py-3">
           <FiltersContainer />
         </div>
       </MaxWidthWrapper>
