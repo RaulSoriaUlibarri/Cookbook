@@ -36,7 +36,10 @@ const SearchBar = ({
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="hidden md:flex w-full max-w-md">
+      <form
+        onSubmit={handleSubmit}
+        className="mx-4 hidden h-11 min-w-0 max-w-md flex-1 self-center sm:flex"
+      >
         <SearchInput
           value={query}
           onChange={setQuery}
@@ -45,31 +48,31 @@ const SearchBar = ({
         <button
           type="submit"
           aria-label="Search"
-          className="rounded-r-full pl-2 pr-3 py-1 bg-emerald-600 hover:bg-emerald-700 hover:cursor-pointer dark:bg-orange-600 dark:hover:bg-orange-700"
+          className="flex shrink-0 items-center justify-center rounded-r-full bg-emerald-600 px-4 hover:cursor-pointer hover:bg-emerald-700 dark:bg-orange-600 dark:hover:bg-orange-700"
         >
-          <Search className="text-white" />
+          <Search className="size-5 text-white" />
         </button>
       </form>
-
-      <div className="flex md:hidden items-center">
+      <div className="flex items-center sm:hidden">
         {isMobileOpen ? (
           <form
             onSubmit={handleSubmit}
             onKeyDown={handleKeyDown}
-            className="flex w-full"
+            className="flex h-11 w-full"
           >
             <SearchInput
               value={query}
               onChange={setQuery}
               placeholder={placeholder}
+              inputRef={mobileInputRef}
             />
             <button
               type="button"
               aria-label="Close search"
               onClick={() => setIsMobileOpen(false)}
-              className="rounded-r-full px-3 py-1 bg-emerald-600 hover:bg-emerald-700 hover:cursor-pointer"
+              className="flex shrink-0 items-center justify-center rounded-r-full bg-emerald-600 px-3 hover:cursor-pointer hover:bg-emerald-700 dark:bg-orange-600 dark:hover:bg-orange-700"
             >
-              <X className="text-white h-5 w-5" />
+              <X className="size-5 text-white" />
             </button>
           </form>
         ) : (
@@ -77,9 +80,9 @@ const SearchBar = ({
             type="button"
             aria-label="Open search"
             onClick={() => setIsMobileOpen(true)}
-            className="p-2 rounded-full bg-emerald-600 hover:bg-emerald-700 hover:cursor-pointer"
+            className="rounded-full bg-emerald-600 p-2 hover:cursor-pointer hover:bg-emerald-700 dark:bg-orange-600 dark:hover:bg-orange-700"
           >
-            <Search className="text-white h-5 w-5" />
+            <Search className="size-5 text-white" />
           </button>
         )}
       </div>
