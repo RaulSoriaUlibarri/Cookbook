@@ -77,17 +77,17 @@ const MealCarousel = ({
     <div
       className={`mt-15 ${
         featured
-          ? "bg-emerald-50 dark:bg-emerald-950 rounded-2xl px-4 py-10 md:p-6"
-          : ""
+          ? "bg-emerald-50 dark:bg-emerald-950 rounded-2xl px-4 py-5 md:p-6"
+          : "px-4 md:p-6"
       }`}
     >
       <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center gap-3">
+        <div className="text-left sm:flex sm:items-center sm:gap-3">
           <h2
             className={`text-left font-bold text-gray-900 dark:text-gray-100 ${
               featured
-                ? "text-3xl md:text-4xl text-emerald-700 dark:text-emerald-400"
-                : "text-2xl"
+                ? "text-xl sm:text-3xl md:text-4xl text-emerald-700 dark:text-emerald-400"
+                : "text-lg sm:text-2xl"
             }`}
           >
             {title}
