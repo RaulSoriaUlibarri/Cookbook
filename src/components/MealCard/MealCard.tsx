@@ -43,18 +43,18 @@ const MealCard = ({
     <>
       <li
         id={id}
-        className={`relative overflow-hidden rounded-lg cursor-pointer
+        className={`mx-auto sm:max-w-full relative overflow-hidden rounded-lg cursor-pointer
           bg-white border border-gray-200 shadow-md
           dark:bg-slate-800 dark:border-slate-700 dark:shadow-slate-900/40
           transition duration-200 hover:-translate-y-1 hover:shadow-lg
           dark:hover:border-orange-500/50
-          ${variant === "grid" ? "flex flex-col border-b-2 border-b-emerald-600 dark:border-b-orange-500" : "flex flex-row items-center p-2 gap-4"} ${className}`}
+          ${variant === "grid" ? "max-w-[250px] flex flex-col border-b-2 border-b-emerald-600 dark:border-b-orange-500" : "flex flex-row items-center p-2 gap-4"} ${className}`}
       >
         <Link href={`/recipe/${id}`} className="absolute inset-0 z-10"></Link>
         <div
           className={
             variant === "grid"
-              ? "max-h-[250px] w-full"
+              ? "max-h-[150px] md:max-h-[250px] sm:w-full"
               : "w-40 h-28 flex-shrink-0"
           }
         >
