@@ -100,7 +100,7 @@ const MealCard = ({
           ) : (
             <BookmarkPlus
               strokeWidth={2}
-              className="w-10 h-10 fill-emerald-100 dark:fill-slate-800 text-emerald-600 hover:text-emerald-700 hover:fill-emerald-700 dark:text-orange-400 dark:drop-shadow-md dark:hover:text-orange-500 dark:hover:fill-orange-500"
+              className="w-10 h-10 fill-emerald-100 dark:fill-orange-400 text-emerald-600 hover:text-emerald-700 hover:fill-emerald-700 dark:text-slate-800 dark:drop-shadow-md dark:hover:text-orange-500 dark:hover:fill-orange-500"
             />
           )}
         </button>
