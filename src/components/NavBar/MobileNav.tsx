@@ -32,16 +32,6 @@ const MobileNav = ({ isAuth }: { isAuth: boolean }) => {
           <ul className="absolute bg-white border-b border-zinc-200 shadow-xl grid w-full gap-3 px-10 pt-20 pb-8 dark:bg-emerald-950">
             {!isAuth ? (
               <>
-                <li>
-                  <Link
-                    onClick={() => closeOnCurrent("/sign-up")}
-                    className="flex items-center w-full font-semibold text-green-600 dark:text-orange-500"
-                    href="/directory"
-                  >
-                    <CookingPot className="m-2" />
-                    Recipes
-                  </Link>
-                </li>
                 <li className="my-3 h-px w-full bg-gray-300" />
                 <li>
                   <Link
