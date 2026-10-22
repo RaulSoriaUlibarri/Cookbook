@@ -4,7 +4,7 @@ import MealHero from "@/components/MealHero";
 import Footer from "@/components/UI/Footer";
 import { RecipesContainer } from "../../containers";
 
-export default function directory() {
+export default function Categories() {
   return (
     <>
       <MealHero />

@@ -28,11 +28,6 @@ const NavBar = () => {
           <div className="flex pl-2 sm:pl-0 h-full w-auto items-center justify-end">
             <div className="hidden h-full items-center text-sm sm:flex">
               <NavLink
-                label="Recipes"
-                route="/directory"
-                icon={<CookingPot className="mr-2" size={20} />}
-              />
-              <NavLink
                 label="Favorites"
                 route="/myRecipes"
                 icon={<ChefHat className="mr-2" size={20} />}
