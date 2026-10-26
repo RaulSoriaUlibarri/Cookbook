@@ -1,5 +1,4 @@
 export { default as NavBar } from "./NavBar/NavBar";
-export { default as RecipeSearchBar } from "./RecipeSearchBar";
 export { default as FiltersContainer } from "./FiltersContainer/FiltersContainer";
 export { default as CollectionHeader } from "./CollectionHeader/CollectionHeader";
 export { default as CollectionHeaderSkeleton } from "./CollectionHeader/CollectionHeaderSkeleton";
