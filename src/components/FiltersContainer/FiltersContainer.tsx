@@ -10,7 +10,6 @@ import {
 import type { Category, Country, Ingredient } from "@/types";
 import FilterMegaMenu from "./FilterMegaMenu";
 
-// 5 columnas x 6 filas: lo que cabe en el panel sin hacer scroll
 const MAX_FILTER_OPTIONS = 30;
 
 const listQueryOptions = {
@@ -57,9 +56,9 @@ const FiltersContainer = () => {
             label: "Countries",
             arialLabel: "Browse countries",
             href: "/all-countries",
-            options: countries.map((country) => country.strArea),
+            options: countries.map((country) => country.strCountry),
             maxOptions: MAX_FILTER_OPTIONS,
-            handleChange: goTo("/countries"),
+            handleChange: goTo("/all-countries"),
           },
           {
             label: "Ingredients",
@@ -67,7 +66,7 @@ const FiltersContainer = () => {
             href: "/all-ingredients",
             options: ingredients.map((ingredient) => ingredient.strIngredient),
             maxOptions: MAX_FILTER_OPTIONS,
-            handleChange: goTo("/ingredients"),
+            handleChange: goTo("/all-ingredients"),
           },
         ]}
       />
