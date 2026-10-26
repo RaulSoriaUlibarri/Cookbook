@@ -33,7 +33,7 @@ const NavBar = () => {
                 icon={<ChefHat className="mr-2" size={20} />}
               />
               <ThemeToggle />
-              <ProfileClient />
+              {/* <ProfileClient /> */}
             </div>
             <MobileNav isAuth={false} />
           </div>
