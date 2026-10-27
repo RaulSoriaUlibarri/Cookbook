@@ -1,14 +1,14 @@
-type IngredientDetailsProps = {
+type CollectionHeaderProps = {
   name: string;
   description: string | null;
   image: string | null;
 };
 
-const IngredientDetails = ({
+const CollectionHeader = ({
   name,
   description,
   image,
-}: IngredientDetailsProps) => {
+}: CollectionHeaderProps) => {
   return (
     <>
       <h1 className="font-roboto-slab text-emerald-950 text-xl md:text-2xl lg:text-4xl my-5 lg:my-10 mx-auto w-fit font-bold dark:text-white text-center">
@@ -30,4 +30,4 @@ const IngredientDetails = ({
   );
 };
 
-export default IngredientDetails;
+export default CollectionHeader;

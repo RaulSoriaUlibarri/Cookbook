@@ -12,7 +12,7 @@ type RecipeFilterTypes = {
 
 const useRecipeFilterStore = create<RecipeFilterTypes>((set) => ({
   filterType: "category",
-  filterValue: "dessert",
+  filterValue: "Dessert",
   setFilter: (filterType, filterValue) => set({ filterType, filterValue }),
 }));
 

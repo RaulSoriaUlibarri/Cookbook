@@ -1,4 +1,4 @@
-const IngredientsDetailsSkeleton = () => {
+const CollectionHeaderSkeleton = () => {
   return (
     <div className="animate-pulse">
       <div className="h-7 md:h-8 lg:h-10 w-48 md:w-64 lg:w-80 bg-gray-200 dark:bg-gray-700 rounded my-5 lg:my-10 mx-auto" />
@@ -16,4 +16,4 @@ const IngredientsDetailsSkeleton = () => {
   );
 };
 
-export default IngredientsDetailsSkeleton;
+export default CollectionHeaderSkeleton;

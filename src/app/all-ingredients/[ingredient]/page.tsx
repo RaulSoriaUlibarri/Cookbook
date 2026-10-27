@@ -8,8 +8,8 @@ import {
   Breadcrumb,
   RecipesDisplay,
   RecipesDisplaySkeleton,
-  IngredientDetails,
-  IngredientDetailsSkeleton,
+  CollectionHeaderSkeleton,
+  CollectionHeader,
 } from "@/components/index";
 
 type PageProps = {
@@ -39,7 +39,7 @@ export default function IngredientRecipesPage({ params }: PageProps) {
   if (loadingInfo || loadingMeals)
     return (
       <MaxWidthWrapper>
-        <IngredientDetailsSkeleton />
+        <CollectionHeaderSkeleton />
         <RecipesDisplaySkeleton title="Loading Recipes..." />
       </MaxWidthWrapper>
     );
@@ -58,7 +58,7 @@ export default function IngredientRecipesPage({ params }: PageProps) {
               { label: decodedIngredient },
             ]}
           />
-          <IngredientDetails
+          <CollectionHeader
             name={name}
             description={description}
             image={image}
