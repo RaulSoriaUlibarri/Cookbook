@@ -1,6 +1,5 @@
 "use client";
 
-import MealHero from "@/components/MealHero";
 import Footer from "@/components/UI/Footer";
 import { RecipesContainer } from "../../containers";
 import { CollectionHeader, CollectionHeaderSkeleton } from "@/components";
@@ -23,11 +22,14 @@ export default function Categories() {
   });
 
   const category = data.find((cat) => cat.strCategory === filterValue);
-  console.log(category);
+
   return (
     <>
-      <MealHero />
-      {/* <CollectionHeader /> */}
+      <CollectionHeader
+        name={category.strCategory}
+        description={category.strCategoryDescription}
+        image={category.strCategoryThumb}
+      />
       <div className="mt-14 mb-28 p-1 h-auto ">
         <RecipesContainer />
       </div>
