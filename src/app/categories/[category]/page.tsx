@@ -52,6 +52,12 @@ export default function CategoryRecipesPage({ params }: PageProps) {
     <>
       <MaxWidthWrapper className="px-5 md:p-none">
         <section className="w-full">
+          <Breadcrumb
+            items={[
+              { label: "All Categories", href: "/categories" },
+              { label: decodedCategory },
+            ]}
+          />
           <CollectionHeader
             name={categorySelected.strCategory}
             description={categorySelected.strCategoryDescription}
