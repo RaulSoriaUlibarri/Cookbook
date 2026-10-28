@@ -68,6 +68,7 @@ export default function CategoryRecipesPage({ params }: PageProps) {
           </div>
         </section>
       </MaxWidthWrapper>
+      <Footer />
     </>
   );
 }
